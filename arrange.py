@@ -84,6 +84,9 @@ def pcinfo():
         sysinfo.memory_info()
         sysinfo.virt_memory()
         sysinfo.batteryinfo()
+        input()
+        # To stop the window termination when
+        # executed in command prompt 
     else:
         try:
             sysinfo.userinfo()
@@ -92,6 +95,9 @@ def pcinfo():
             sysinfo.batteryinfo()
             sysinfo.system_temp()
             sysinfo.fan_speed()
+            input()
+            # To stop the window termination when
+            # executed in command prompt 
         except:
             print("It can't be determined for the present OS")
         
