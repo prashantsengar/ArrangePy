@@ -59,7 +59,7 @@ def arrange():
             shutil.move(file,'.\\PDF')
         elif file.lower().endswith('png') or file.lower().endswith('jpg') or file.lower().endswith('jpeg') or file.lower().endswith('gif'):
             print(file)
-             makeFolders('Images')
+            makeFolders('Images')
             shutil.move(file,'.\\Images')
         elif file.lower().endswith('.mp4') or file.lower().endswith('.mkv') or file.lower().endswith('.avi') or file.lower().endswith('.3gp'):
             print(file)
