@@ -10,7 +10,7 @@ Organizes files in folders and helps you to clean your PC
 Organizes the files based on their extensions in folders
 
 ### Features
-Currently it has 2 modes
+Currently it has 3 modes
 
 - Easy mode: Organzises files in the current directory
 - Hard mode: Organizes files in the current directory and its subdirectories
