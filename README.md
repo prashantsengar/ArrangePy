@@ -14,6 +14,7 @@ Currently it has 2 modes
 
 - Easy mode: Organzises files in the current directory
 - Hard mode: Organizes files in the current directory and its subdirectories
+- Pc Health and Info: Returns the Health and info of the pc
 
 ## What's next
 
@@ -24,4 +25,3 @@ Currently it has 2 modes
 ### Make a complete PC suite by integrating other features
 - Feature to notify the user to take breaks
 - Notify about battery percentage as in this (repo)[https://github.com/prashantsengar/BatteryNotifier]
-- Get info about PC health
