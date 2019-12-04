@@ -25,6 +25,7 @@ class system_health():
             if hour >=0:
                 print(f"Time remaining for complete discharge is {hour}hr: {min}min: {sec}sec")
                 print(f"Battery percentage left: {battery.percent}%")
+                print(f"Charger:{"Connected" if battery.power_plugged == True else "Not connected"}")
                 print("\n")
             else:
                 print(f"Battery percentage left: {battery.percent}%")
