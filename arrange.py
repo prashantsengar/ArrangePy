@@ -14,39 +14,40 @@ def makeFolders(f):
         return
     os.mkdir(f'.\\{f}')
 
-makeFolders('PDF')
-makeFolders('Images')
-makeFolders('Videos')
-makeFolders('Audios')
-makeFolders('Programs')
-makeFolders('Docs')
 
 def strong_arrange():
         for foldername, subfolders, filenames in os.walk(folder):
             for file in filenames:
                 if file.lower().endswith('.pPDF') or file.lower().endswith('.PDF'):
                         print(file)
+                        makeFolders('PDF')
                         shutil.move(file,'.\\PDF')
                 elif file.lower().endswith('png') or file.lower().endswith('jpg') or file.lower().endswith('jpeg') or file.lower().endswith('gif'):
                     print(file)
+                    makeFolders('Images')
                     shutil.move(file,'.\\Images')
                 elif file.lower().endswith('.mp4') or file.lower().endswith('.mkv') or file.lower().endswith('.avi') or file.lower().endswith('.3gp'):
                     print(file)
+                    makeFolders('Videos')
                     shutil.move(file,'.\\Videos')
                 elif file.lower().endswith('.mp3') or file.lower().endswith('.wav'):
                     print(file)
+                    makeFolders('Audios')
                     shutil.move(file,'.\\Audios')
                 elif file.lower().endswith('.exe'):
                     print(file)
+                    makeFolders('Programs')
                     shutil.move(file,'.\\Programs')
                 elif file.lower().endswith('.ios'):
                     print(file)
+                    makeFolders('Ios Files')
                     shutil.move(file,'.\\Ios Files')
                 elif (file.lower().endswith('.docx') or file.lower().endswith('.doc') or
                 file.lower().endswith('.xlsx') or file.lower().endswith('.xls') or
                 file.lower().endswith('.txt') or file.lower().endswith('.csv') or
                 file.lower().endswith('.pptx') or file.lower().endswith('.ppt')):
                     print(file)
+                    makeFolders('Docs')
                     shutil.move(file,'.\\Docs')
          
 
@@ -54,27 +55,34 @@ def arrange():
     for file in os.listdir(folder):
         if file.lower().endswith('.pdf') :
             print(file)
+            makeFolders('PDF')
             shutil.move(file,'.\\PDF')
         elif file.lower().endswith('png') or file.lower().endswith('jpg') or file.lower().endswith('jpeg') or file.lower().endswith('gif'):
             print(file)
+             makeFolders('Images')
             shutil.move(file,'.\\Images')
         elif file.lower().endswith('.mp4') or file.lower().endswith('.mkv') or file.lower().endswith('.avi') or file.lower().endswith('.3gp'):
             print(file)
+            makeFolders('Videos')
             shutil.move(file,'.\\Videos')
         elif file.lower().endswith('.mp3') or file.lower().endswith('.wav'):
             print(file)
+            makeFolders('Audios')
             shutil.move(file,'.\\Audios')
         elif file.lower().endswith('.exe'):
             print(file)
+            makeFolders('Programs')
             shutil.move(file,'.\\Programs')
         elif file.lower().endswith('.ios'):
             print(file)
+            makeFolders('Ios Files')
             shutil.move(file,'.\\Ios Files')
         elif (file.lower().endswith('.docx') or file.lower().endswith('.doc') or
         file.lower().endswith('.xlsx') or file.lower().endswith('.xls') or
         file.lower().endswith('.txt') or file.lower().endswith('.csv') or
         file.lower().endswith('.pptx') or file.lower().endswith('.ppt')):
             print(file)
+            makeFolders('Docs')
             shutil.move(file,'.\\Docs')
  
 
@@ -109,7 +117,7 @@ if __name__ == '__main__':
     folder=os.getcwd()
     print(folder)
 
-    choice = int(input("Press 1 for Weak arrange\nPress 2 for Strong arrange\nPress 3 for Pc Health and Info\nPress 0 to exit the program"))
+    choice = int(input("Press 1 for Weak arrange\nPress 2 for Strong arrange\nPress 3 for Pc Health and Info\nPress 0 to exit the program : "))
 
     if choice==1:
         arrange()
