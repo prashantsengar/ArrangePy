@@ -79,6 +79,7 @@ def arrange():
  
 
 def pcinfo():
+    print("\nPC Health and Info:\n")
     if sys.platform == "win32":
         sysinfo.userinfo()
         sysinfo.memory_info()
