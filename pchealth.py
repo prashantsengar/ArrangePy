@@ -25,7 +25,10 @@ class system_health():
             if hour >=0:
                 print(f"Time remaining for complete discharge is {hour}hr: {min}min: {sec}sec")
                 print(f"Battery percentage left: {battery.percent}%")
-                print(f"Charger:{"Connected" if battery.power_plugged == True else "Not connected"}")
+                if battery.power_plugged == True:
+                    print("Charger: Connected")
+                else:
+                    print("Charger: Not Connected")
                 print("\n")
             else:
                 print(f"Battery percentage left: {battery.percent}%")
@@ -89,4 +92,5 @@ class system_health():
         print("\n")
         
     
-
+if __name__=="__main__":
+    print("This is a module only.\nPlease execute the arrange.py file for running CleanPy")
