@@ -28,24 +28,24 @@ def initialise():
 
 	files = os.listdir(home_path)
 
-	dict1["media_1412"] = np.array(['jpg', 'png', 'mp3', 'mp4'])
-	dict1["text_1412"] = np.array(['txt', 'md'])
-	dict1["code_1412"] = np.array(['cpp', 'py'])
-	dict1["excel_1412"] = np.array(['xlsx', 'csv'])
-	dict1["pdf_1412"] = np.array(['pdf', 'jsp'])
+	dict1["media_1410"] = np.array(['jpg', 'png', 'mp3', 'mp4'])
+	dict1["text_1410"] = np.array(['txt', 'md'])
+	dict1["code_1410"] = np.array(['cpp', 'py'])
+	dict1["excel_1410"] = np.array(['xlsx', 'csv'])
+	dict1["pdf_1410"] = np.array(['pdf', 'jsp'])
 	# dict1["zips_1412"] = np.array(['zip', 'tar.xz'])
 
 	df = pd.DataFrame.from_dict(dict1, orient = 'index')
 
 	my_topics = ['media', 'text', 'code', 'excel', 'pdf']
 
-	my_topics = ["{}_1412".format(topic) for topic in my_topics]
+	my_topics = ["{}_1410".format(topic) for topic in my_topics]
 	# recognising the destination folders 
 	for file in files:
 		if len(file.split('.')) > 1:
 			extensions.append(file.split('.')[-1])
 		else:
-			if file[-5:] == '_1412':
+			if file[-5:] == '_1410':
 				my_folders.append(file)
 			else:
 			 folders.append(file)
