@@ -93,8 +93,7 @@ def arrange():
 if __name__ == '__main__':
 
     print("Arrange files")
-    #folder=os.getcwd()
-    folder=r'C:\Users\ravi\Downloads'
+    folder=os.getcwd()
     print(folder)
 
     choice = int(input("Press 1 for Weak arrange\nPress 2 for Strong arrange\n0 to exit\noption:"))
