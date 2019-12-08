@@ -5,72 +5,109 @@
 import os
 import shutil
 
-def makeFolders(f):
-    if f in os.listdir():
-        return
-    os.mkdir(f'.\\{f}')
+FOLDER_TYPES={'pPDF':['pdf'],
+              'Pimages':['png','jpeg','jpg','gif'],
+              'Pvideos':['mp4','mkv','avi','3gp'],
+              'Paudios':['mp3','wav'],
+              'Pprograms':['exe'],
+              'Pdocs':['xlsx','doc','xlsx','pptx','csv','txt','ppt']
+              }
+RESULT_DIR='output'
 
-makeFolders('pPDF')
-makeFolders('Pimages')
-makeFolders('Pvideos')
-makeFolders('Paudios')
-makeFolders('Pprograms')
-makeFolders('Pdocs')
+def identyType(ext):
+    '''
+    Accept extenssion Example .pdf .mp4 and
+    return a category type from FOLDER_TYPES Dictionary
+    '''
+    for key,value in FOLDER_TYPES.items():
+        if ext[1:] in value:
+            return key
+            break
+    else:
+        return None
+
+
+def makeFolders(lst):
+    '''
+    Accept A List of Folder name and
+    create that category name folder in RESULT_DIR
+    '''
+    for name in lst:
+        if name in os.listdir(RESULT_DIR):
+            return
+        os.mkdir(f'{RESULT_DIR}\\{name}')
+
+
+def moveFiles(src,dst):
+    '''
+    Accept source and destination and move files .
+    Return True if File is Copied other wise False
+    '''
+    res=True
+    try:
+        pass
+        #print(src,dst)
+        #shutil.move(src,os.path.join(RESULT_DIR,dst))
+    except:
+        res=False
+    return res
+
+#Create Output and category folder if not Exists
+makeFolders(FOLDER_TYPES.keys())
+
+def startProcess(folder,file):
+    '''
+    Accept file name and parent folder_name(folder)
+    Return a Tuple(TRUE|FALSE,TYPE_OF_FILE)
+    
+    '''
+    types=os.path.splitext(file)[1].lower()
+    src=os.path.join(folder,file)
+    dst=identyType(types)
+    if dst is not None:
+        return moveFiles(src,dst),dst
+    return False,'Others(Not_moved)'
 
 def strong_arrange():
-        for foldername, subfolders, filenames in os.walk(folder):
-            for file in filenames:
-                if file.lower().endswith('.pPDF'):
-                        print(file)
-                        shutil.move(file,'.\\pPDF')
-                elif file.lower().endswith('png') or file.lower().endswith('jpg') or file.lower().endswith('jpeg') or file.lower().endswith('gif'):
-                    print(file)
-                    shutil.move(file,'.\\Pimages')
-                elif file.lower().endswith('.mp4') or file.lower().endswith('.mkv') or file.lower().endswith('.avi') or file.lower().endswith('.3gp'):
-                    print(file)
-                    shutil.move(file,'.\\Pvideos')
-                elif file.lower().endswith('.mp3') or file.lower().endswith('.wav'):
-                    print(file)
-                    shutil.move(file,'.\\Paudios')
-         
-
+    TOTAL_COUNT={}
+    for foldername, subfolders, filenames in os.walk(folder):
+        for file in filenames:
+            if os.path.isfile(os.path.join(folder,file)):
+               status,types=startProcess(folder,file)
+               if types in TOTAL_COUNT:
+                   TOTAL_COUNT[types]=TOTAL_COUNT[types]+1
+               else:
+                   TOTAL_COUNT[types]=1
+    return TOTAL_COUNT
 def arrange():
+    TOTAL_COUNT={}
     for file in os.listdir(folder):
-        if file.lower().endswith('.pdf') :
-            print(file)
-            shutil.move(file,'.\\pPDF')
-        elif file.lower().endswith('png') or file.lower().endswith('jpg') or file.lower().endswith('jpeg') or file.lower().endswith('gif'):
-            print(file)
-            shutil.move(file,'.\\Pimages')
-        elif file.lower().endswith('.mp4') or file.lower().endswith('.mkv') or file.lower().endswith('.avi') or file.lower().endswith('.3gp'):
-            print(file)
-            shutil.move(file,'.\\Pvideos')
-        elif file.lower().endswith('.mp3') or file.lower().endswith('.wav'):
-            print(file)
-            shutil.move(file,'.\\Paudios')
-        elif file.lower().endswith('.exe'):
-            print(file)
-            shutil.move(file,'.\\Pprograms')
-        elif (file.lower().endswith('.docx') or file.lower().endswith('.doc') or
-        file.lower().endswith('.xlsx') or file.lower().endswith('.xls') or
-        file.lower().endswith('.txt') or file.lower().endswith('.csv') or
-        file.lower().endswith('.pptx') or file.lower().endswith('.ppt')):
-            print(file)
-            shutil.move(file,'.\\Pdocs')
- 
+        if os.path.isfile(os.path.join(folder,file)):
+            status,types=startProcess(folder,file)
+            if types in TOTAL_COUNT:
+                TOTAL_COUNT[types]=TOTAL_COUNT[types]+1
+            else:
+                TOTAL_COUNT[types]=1
+    return TOTAL_COUNT
 
 if __name__ == '__main__':
 
     print("Arrange files")
-    folder=os.getcwd()
+    #folder=os.getcwd()
+    folder=r'C:\Users\ravi\Downloads'
     print(folder)
 
-    choice = int(input("Press 1 for Weak arrange\nPress 2 for Strong arrange\n0 to exit"))
+    choice = int(input("Press 1 for Weak arrange\nPress 2 for Strong arrange\n0 to exit\noption:"))
 
     if choice==1:
-        arrange()
+        res=arrange()
     if choice==2:
-        strong_arrange()
+        res=strong_arrange()
     if choice==0:
         exit(0)
+
+    #Final Result
+    print('{0:*^30s}'.format('Result'))
+    for key,value in res.items():
+        print(f'{key}:{value}')
     
