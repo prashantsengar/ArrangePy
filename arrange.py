@@ -29,7 +29,7 @@ def strong_arrange():
                 elif file.lower().endswith('.mp4') or file.lower().endswith('.mkv') or file.lower().endswith('.avi') or file.lower().endswith('.3gp'):
                     print(file)
                     shutil.move(file,'.\\Pvideos')
-                elif file.lower().endswith('.mp3') or file.lower().endswith('.wav'):
+                elif file.lower().endswith('.mp3') or file.lower().endswith('.wav') or file.lower().endswith('.flac'):
                     print(file)
                     shutil.move(file,'.\\Paudios')
          
@@ -45,7 +45,7 @@ def arrange():
         elif file.lower().endswith('.mp4') or file.lower().endswith('.mkv') or file.lower().endswith('.avi') or file.lower().endswith('.3gp'):
             print(file)
             shutil.move(file,'.\\Pvideos')
-        elif file.lower().endswith('.mp3') or file.lower().endswith('.wav'):
+        elif file.lower().endswith('.mp3') or file.lower().endswith('.wav') or file.lower().endswith('.flac'):
             print(file)
             shutil.move(file,'.\\Paudios')
         elif file.lower().endswith('.exe'):
@@ -54,7 +54,7 @@ def arrange():
         elif (file.lower().endswith('.docx') or file.lower().endswith('.doc') or
         file.lower().endswith('.xlsx') or file.lower().endswith('.xls') or
         file.lower().endswith('.txt') or file.lower().endswith('.csv') or
-        file.lower().endswith('.pptx') or file.lower().endswith('.ppt')):
+        file.lower().endswith('.pptx') or file.lower().endswith('.ppt') or file.lower().endswith('.epub')):
             print(file)
             shutil.move(file,'.\\Pdocs')
  
