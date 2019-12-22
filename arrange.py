@@ -4,14 +4,15 @@
 
 import os
 import shutil
+import configparser
 
-FOLDER_TYPES = {'pPDF':['pdf'],
-              'Pimages':['png','jpeg','jpg','gif'],
-              'Pvideos':['mp4','mkv','avi','3gp'],
-              'Paudios':['mp3','wav'],
-              'Pprograms':['exe'],
-              'Pdocs':['xlsx','doc','xlsx','pptx','csv','txt','ppt']
-              }
+
+config=configparser.ConfigParser()
+config.read("config.ini")
+sections=config['ext']
+FOLDER_TYPES ={key:sections[key] for key in sections}
+
+
 RESULT_DIR = 'output'
 
 def identifyType(ext):
@@ -32,7 +33,6 @@ def makeFolders(lst):
     Accept A List of Folder name and
     create that category name folder in RESULT_DIR
     '''
-    
     if os.path.exists(RESULT_DIR) is False:
         os.mkdir(RESULT_DIR)
                       
