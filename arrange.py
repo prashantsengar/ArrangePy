@@ -58,10 +58,7 @@ def arrange():
             print(file)
             shutil.move(file,'.\\Pdocs')
 
-def custom_arrange():
-    a=input("enter the extention you want to locate file with")
-    for files in os.listdir(folder):
-        if files
+
 
 if __name__ == '__main__':
 
@@ -69,14 +66,12 @@ if __name__ == '__main__':
     folder=os.getcwd()
     print(folder)
 
-    choice = int(input("Press 1 for Weak arrange\nPress 2 for Strong arrange \nPress 3 for custom arrange\n0 to exit"))
+    choice = int(input("Press 1 for Weak arrange\nPress 2 for Strong arrange \n0 to exit"))
 
     if choice==1:
         arrange()
     if choice==2:
         strong_arrange()
-    if choice==3:
-        custom_arrange()
     if choice==0:
         exit(0)
     
