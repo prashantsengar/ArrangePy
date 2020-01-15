@@ -8,9 +8,9 @@ import shutil
 FOLDER_TYPES = {'pPDF':['pdf'],
               'Pimages':['png','jpeg','jpg','gif'],
               'Pvideos':['mp4','mkv','avi','3gp'],
-              'Paudios':['mp3','wav'],
+              'Paudios':['mp3','flac'],
               'Pprograms':['exe'],
-              'Pdocs':['xlsx','doc','xlsx','pptx','csv','txt','ppt']
+              'Pdocs':['xlsx','doc','docx','pptx','csv','txt','ppt']
               }
 RESULT_DIR = 'output'
 
