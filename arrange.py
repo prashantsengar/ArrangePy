@@ -6,11 +6,14 @@ import os
 import shutil
 
 FOLDER_TYPES = {'pPDF':['pdf'],
-              'Pimages':['png','jpeg','jpg','gif'],
+              'Pimages':['png','jpeg','jpg','gif','jfif' ,'webp'],
               'Pvideos':['mp4','mkv','avi','3gp'],
               'Paudios':['mp3','wav'],
-              'Pprograms':['exe'],
-              'Pdocs':['xlsx','doc','xlsx','pptx','csv','txt','ppt']
+              'Pprograms':['exe' , 'msi','apk'],
+              'Pdocs':['xlsx','doc','xlsx','pptx','csv','txt','ppt','docx','odt','osd' , 'rtf' ,'ris'],
+              'PCompressed' : ['zip' , 'tar' , 'gz' , 'rar'],
+              'PCodes' : ['py' , 'ipynb','html','h5'],
+              'PTorrent':['torrent']
               }
 RESULT_DIR = 'output'
 
@@ -32,14 +35,13 @@ def makeFolders(lst):
     Accept A List of Folder name and
     create that category name folder in RESULT_DIR
     '''
-    
+
     if os.path.exists(RESULT_DIR) is False:
         os.mkdir(RESULT_DIR)
-                      
+
     for name in lst:
-        if name in os.listdir(RESULT_DIR):
-            return
-        os.mkdir(os.path.join(RESULT_DIR,name))
+        if name not in os.listdir(RESULT_DIR):
+            os.mkdir(os.path.join(RESULT_DIR,name))
 
 
 def moveFiles(src,dst):
@@ -62,7 +64,7 @@ def startProcess(folder,file):
     '''
     Accept file name and parent folder_name(folder)
     Return a Tuple(TRUE|FALSE,TYPE_OF_FILE)
-    
+
     '''
     types = os.path.splitext(file)[1].lower()
     src = os.path.join(folder,file)
@@ -116,4 +118,4 @@ if __name__ == '__main__':
         if key == others:
             continue
         print(f'{value} file moved into Category {os.path.join(RESULT_DIR,key)}')
-    print(f'{res[others]} file Not moved')    
+    print(f'{res[others]} file Not moved')
