@@ -6,13 +6,13 @@ import os
 import shutil
 
 FOLDER_TYPES = {'pPDF':['pdf'],
-              'Pimages':['png','jpeg','jpg','gif'],
+              'Pimages':['png','jpeg','jpg','gif', 'tiff', 'psd', 'ico'],
               'Pvideos':['mp4','mkv','avi','3gp'],
               'Paudios':['mp3','wav'],
-              'Pprograms':['exe'],
-              'Pdocs':['xlsx','doc','xlsx','pptx','csv','txt','ppt']
+              'Pprograms':['exe', 'app', 'out'],
+              'Pdocs':['xlsx','doc','xlsx','pptx','csv','txt','ppt', 'odt', 'rtf', 'ods', 'txt', 'pps']
               }
-RESULT_DIR = 'output'
+RESULT_DIR = 'CleanedPy'
 
 def identifyType(ext):
     '''
