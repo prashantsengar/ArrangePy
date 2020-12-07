@@ -4,6 +4,10 @@
 
 import os
 import shutil
+import psutil
+import time
+
+from win10toast import ToastNotifier
 
 FOLDER_TYPES = {'pPDF':['pdf'],
               'Pimages':['png','jpeg','jpg','gif', 'tiff', 'psd', 'ico'],
@@ -13,6 +17,10 @@ FOLDER_TYPES = {'pPDF':['pdf'],
               'Pdocs':['xlsx','doc','xlsx','pptx','csv','txt','ppt', 'odt', 'rtf', 'ods', 'txt', 'pps']
               }
 RESULT_DIR = 'CleanedPy'
+
+def notify(title, msg):
+    noti = ToastNotifier()
+    noti.show_toast(title, msg, duration=10)
 
 def identifyType(ext):
     '''
@@ -92,6 +100,17 @@ def arrange():
             else:
                 TOTAL_COUNT[types]=1
     return TOTAL_COUNT
+
+while True:
+	batt = psutil.sensors_battery()
+
+	if batt.percent <= 30:
+		notify('Battery Low', 'Battery percentage less than 30, please plug-in a charger. ')
+	elif batt.percent >=90 and batt.power_plugged is True	:
+		notify('Battery charged', 'Battery charge level optimum, you can safely remove charger.')
+	
+	for i in range(600):
+		time.sleep(1)
 
 if __name__ == '__main__':
 
