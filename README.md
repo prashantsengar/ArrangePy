@@ -11,7 +11,8 @@ Organizes files in folders and helps you to clean your PC
   Task Scheduler.
 
 ## What it does
-Organizes the files based on their extensions in folders
+Organizes the files based on their extensions in folders. It Notifies about Battery Status. It Also Notifies the Time
+spent from the start of the Program i.e., if it is in startup the time spent by you for every half-an-hour.
 
 ### Features
 Currently it has 2 modes
