@@ -106,7 +106,7 @@ if __name__ == '__main__':
     if choice == 2:
         res = strong_arrange()
     if choice == 0:
-        exit(0)
+        sys.exit()
 
     # Final Result
     message = "Result"
