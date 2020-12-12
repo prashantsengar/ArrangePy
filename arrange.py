@@ -1,8 +1,8 @@
-#arrange.py
-#Arranges the fiels according to their types for later classification
-#uses shutil, os, re, sys, configparser
+# arrange.py
+# Arranges the fiels according to their types for later classification
 
 import os
+import sys
 import shutil
 import configparser
 import re
@@ -39,7 +39,6 @@ def identifyType(ext):
     for key,value in FOLDER_TYPES.items():
         if ext[1:] in value:
             return key
-            break
     else:
         return None
 
@@ -63,13 +62,12 @@ def moveFiles(src,dst):
     '''
     res = True
     try:
-        pass
         shutil.move(src,os.path.join(RESULT_DIR,dst))
     except:
         res = False
     return res
 
-#Create Output and category folder if not Exists
+# Create Output and category folder if not Exists
 makeFolders(FOLDER_TYPES.keys())
 
 def startProcess(folder,file):
@@ -96,6 +94,7 @@ def strong_arrange():
                else:
                    TOTAL_COUNT[types] = 1
     return TOTAL_COUNT
+  
 def arrange():
     TOTAL_COUNT = {}
     for file in os.listdir(folder):
@@ -123,9 +122,9 @@ if __name__ == '__main__':
     if choice == 2:
         res = strong_arrange()
     if choice == 0:
-        exit(0)
+        sys.exit()
 
-    #Final Result
+    # Final Result
     message = "Result"
     others="Others(Not_moved)"
     print(f'{message:*^30s}')
