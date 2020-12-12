@@ -1,18 +1,35 @@
 #arrange.py
 #Arranges the fiels according to their types for later classification
-#uses shutil, os
+#uses shutil, os, re, sys, configparser
 
 import os
 import shutil
+import configparser
+import re
+import sys
 
-FOLDER_TYPES = {'pPDF':['pdf'],
-              'Pimages':['png','jpeg','jpg','gif', 'tiff', 'psd', 'ico'],
-              'Pvideos':['mp4','mkv','avi','3gp'],
-              'Paudios':['mp3','wav'],
-              'Pprograms':['exe', 'app', 'out'],
-              'Pdocs':['xlsx','doc','xlsx','pptx','csv','txt','ppt', 'odt', 'rtf', 'ods', 'txt', 'pps']
-              }
+'''
+Read Configuration file for Extensions using RegEx
+'''
+config=configparser.ConfigParser()
+config.read('config.ini')
+extension=config['ext']
+
+# RegEX reading of config file for faster execution
+p = re.compile(r'\'(.*?)\'')
+FOLDER_TYPES = {key:extension[key] for key in extension}
+for key in FOLDER_TYPES:
+    FOLDER_TYPES[key] = p.findall(FOLDER_TYPES[key])
+
+'''
+Takes Command Line Argument for File Location.
+Defaults to Current location if not specified
+'''
 RESULT_DIR = 'CleanedPy'
+try:
+    RESULT_DIR = os.path.join(sys.argv[1],RESULT_DIR)
+except:
+    pass
 
 def identifyType(ext):
     '''
@@ -32,15 +49,12 @@ def makeFolders(lst):
     Accept A List of Folder name and
     create that category name folder in RESULT_DIR
     '''
-    
     if os.path.exists(RESULT_DIR) is False:
         os.mkdir(RESULT_DIR)
                       
     for name in lst:
-        if name in os.listdir(RESULT_DIR):
-            return
-        os.mkdir(os.path.join(RESULT_DIR,name))
-
+        if name not in os.listdir(RESULT_DIR):
+            os.mkdir(os.path.join(RESULT_DIR,name))
 
 def moveFiles(src,dst):
     '''
@@ -96,7 +110,10 @@ def arrange():
 if __name__ == '__main__':
 
     print("Arrange files")
-    folder=os.getcwd()
+    try:
+        folder = sys.argv[1]
+    except:
+        folder = os.getcwd()
     print(folder)
 
     choice = int(input("Press 1 for Weak arrange\nPress 2 for Strong arrange\n0 to exit\noption:"))
