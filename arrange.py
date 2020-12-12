@@ -27,7 +27,7 @@ Defaults to Current location if not specified
 '''
 RESULT_DIR = 'CleanedPy'
 try:
-    RESULT_DIR = sys.argv[1]+"/"+RESULT_DIR
+    RESULT_DIR = os.path.join(sys.argv[1],RESULT_DIR)
 except:
     pass
 
