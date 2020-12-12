@@ -1,6 +1,5 @@
 # arrange.py
 # Arranges the fiels according to their types for later classification
-# uses shutil, os
 
 import os
 import sys
