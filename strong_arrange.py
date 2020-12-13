@@ -7,11 +7,6 @@ from configure import configur
 import re
 
 RESULT_DIR = 'CleanedPy'
-try:
-    RESULT_DIR = os.path.join(sys.argv[1],RESULT_DIR)
-except:
-    pass
-
 FOLDER_TYPES = configur()
 
 def strong_arrange(root,destination,index):
