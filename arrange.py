@@ -85,10 +85,10 @@ def startProcess(folder,file):
 
 def strong_arrange():
     TOTAL_COUNT={}
-    for foldername, subfolders, filenames in os.walk(folder):
+    for (foldername, subfolders, filenames) in os.walk(folder):
         for file in filenames:
-            if os.path.isfile(os.path.join(folder,file)):
-               status,types = startProcess(folder,file)
+            if os.path.isfile(os.path.join(foldername,file)):
+               status,types = startProcess(foldername,file)
                if types in TOTAL_COUNT:
                    TOTAL_COUNT[types] = TOTAL_COUNT[types]+1
                else:
