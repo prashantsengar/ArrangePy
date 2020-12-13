@@ -19,4 +19,4 @@ def weak_arrange(root,destination,index):
                TOTAL_COUNT[types] = 1
     return TOTAL_COUNT
 
-print(weak_arrange(sys.argv[1],RESULT_DIR,FOLDER_TYPES))
+#print(weak_arrange(sys.argv[1],RESULT_DIR,FOLDER_TYPES))
