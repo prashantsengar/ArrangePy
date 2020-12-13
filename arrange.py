@@ -84,12 +84,19 @@ def startProcess(folder,file):
         return moveFiles(src,dst),dst
     return False,'Others(Not_moved)'
 
-def strong_arrange(warn = True):
+def strong_arrange(warn=True):
     if warn == True:
-        print("You are going to strong arrange the directory DIRECTORY_NAME. ",
-              "It will rearrange all the files in the subfolders as well. ", 
-              "It might cause issues if you have added wrong extensions in the config.ini file and run the program in a sensitive directory. ",
-              "You still have 5 seconds to cancel it if you want to review anything. (Press Ctrl+C to abort)")
+        print("You are going to strong arrange ",
+              "the directory DIRECTORY_NAME. ",
+              "It will rearrange all the files ",
+              "in the subfolders as well. ", 
+              "It might cause issues if you ",
+              "have added wrong extensions ",
+              "in the config.ini file and run ",
+              "the program in a sensitive directory. ",
+              "You still have 5 seconds to ",
+              "cancel it if you want to review anything. ",
+              "(Press Ctrl+C to abort)")
         try:
             time.sleep(5)
         except KeyboardInterrupt:
