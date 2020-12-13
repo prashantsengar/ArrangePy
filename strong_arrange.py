@@ -21,4 +21,4 @@ def strong_arrange(root,destination,index):
                    TOTAL_COUNT[types] = 1
     return TOTAL_COUNT
 
-print(strong_arrange(sys.argv[1],RESULT_DIR,FOLDER_TYPES))
+#print(strong_arrange(sys.argv[1],RESULT_DIR,FOLDER_TYPES))
