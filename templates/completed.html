@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>complete</title>
+  <meta name="generator" content="Google Web Designer 10.0.1.1204">
+  <style type="text/css" id="gwd-text-style">
+    p {
+      margin: 0px;
+    }
+    h1 {
+      margin: 0px;
+    }
+    h2 {
+      margin: 0px;
+    }
+    h3 {
+      margin: 0px;
+    }
+  </style>
+  <style type="text/css">
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+    body {
+      background-color: transparent;
+      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-style: preserve-3d;
+    }
+    .gwd-p-1w1z {
+      position: absolute;
+      width: 254px;
+      height: 30px;
+      transform-origin: 50% 50% 0px;
+      font-weight: bold;
+      font-family: "Arial Black";
+      text-align: center;
+      color: rgb(226, 21, 21);
+      left: 280px;
+      top: 59px;
+    }
+    .gwd-p-153m {
+      position: absolute;
+      width: 254px;
+      font-family: "Arial Black";
+      font-weight: bold;
+      text-align: left;
+      background-image: none;
+      background-color: rgb(241, 229, 229);
+      transform-origin: 50% 50% 0px;
+      height: 139px;
+      color: rgb(0, 3, 12);
+      left: 280px;
+      top: 162px;
+    }
+    .gwd-p-1cfb {
+      position: absolute;
+      width: 254px;
+      height: 51px;
+      font-family: "Arial Black";
+      font-weight: bold;
+      color: rgb(0, 3, 12);
+      font-size: 12px;
+      left: 280px;
+      top: 313px;
+    }
+    .gwd-span-1e9i {
+      font-size: 15px;
+      color: rgb(19, 213, 152);
+    }
+    .gwd-span-1djn {
+      font-weight: normal;
+      color: rgb(19, 213, 152);
+    }
+    .gwd-span-1cy8 {
+      font-weight: normal;
+      color: rgb(19, 213, 152);
+    }
+    .gwd-span-do5y {
+      font-weight: normal;
+      color: rgb(19, 213, 152);
+    }
+    .gwd-span-jf77 {
+      font-weight: normal;
+      color: rgb(19, 213, 152);
+    }
+    .gwd-span-148d {
+      font-weight: normal;
+      color: rgb(19, 213, 152);
+    }
+    .gwd-p-szps {
+      position: absolute;
+      top: 376px;
+      width: 254px;
+      height: 51px;
+      font-family: "Arial Black";
+      font-size: 12px;
+      font-weight: bold;
+      color: rgb(0, 3, 12);
+      left: 280px;
+    }
+    .gwd-span-1jf7 {
+      font-weight: normal;
+      font-family: "Arial Black";
+      color: rgb(211, 30, 60);
+    }
+    .gwd-p-1sr2 {
+      left: 208px;
+      top: 117px;
+    }
+    .gwd-p-fmzj {
+      position: absolute;
+      left: 280px;
+      top: 124px;
+      width: 254px;
+      height: 24.2px;
+      font-family: "Arial Black";
+      font-weight: bold;
+      color: rgb(33, 33, 33);
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body class="htmlNoPages">
+  <p class="gwd-p-1w1z">File Cleaning Completed</p>
+  <p class="gwd-p-fmzj">Here is the report.</p>
+  <p class="gwd-p-153m">
+    {% for key,value in res.items() %} 
+      {% if 'Others' in key %}
+      {% else %}
+       {{value}}&nbsp; &nbsp; &nbsp; moved to <span class="gwd-span-1djn">{{key}}</span><br>
+      {%endif %}
+    {% endfor %}
+    {{res['Others(Not_moved)']}}&nbsp; &nbsp; &nbsp; are not moved<br>
+  </p>
+  <p class="gwd-p-szps">Thank You for using the app.<br>
+    <br>
+     click <a href="http://127.0.0.1:5000/">here</a> to go back</p>
+  
+</body>
+
+</html>
