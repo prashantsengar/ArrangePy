@@ -89,7 +89,7 @@ def strong_arrange(warn=True):
         print("You are going to strong arrange ",
               "the directory DIRECTORY_NAME. ",
               "It will rearrange all the files ",
-              "in the subfolders as well. ", 
+              "in the subfolders as well. ",
               "It might cause issues if you ",
               "have added wrong extensions ",
               "in the config.ini file and run ",
