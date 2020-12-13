@@ -100,7 +100,7 @@ def strong_arrange(warn=True):
         try:
             time.sleep(5)
         except KeyboardInterrupt:
-            sys.exit()        
+            sys.exit()       
     TOTAL_COUNT={}
     for foldername, subfolders, filenames in os.walk(folder):
         for file in filenames:
