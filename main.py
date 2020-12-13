@@ -6,7 +6,6 @@ import sys
 import shutil
 import configparser
 import re
-import sys
 from move_files import *
 from configure import configur
 from strong_arrange import strong_arrange
