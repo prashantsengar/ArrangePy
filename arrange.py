@@ -1,6 +1,3 @@
-#arrange.py
-#Arranges the fiels according to their types for later classification
-#uses shutil, os
 # arrange.py
 # Arranges the fiels according to their types for later classification
 
@@ -138,4 +135,3 @@ if __name__ == '__main__':
             continue
         print(f'{value} file moved into Category {os.path.join(RESULT_DIR,key)}')
     print(f'{res[others]} file Not moved')    
-
