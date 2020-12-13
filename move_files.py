@@ -12,7 +12,7 @@ def startProcess(folder,file,index,root_dst):
     dst_folder = identifyType(ext,index)
     if dst_folder is not None:
         dst = os.path.join(root_dst,dst_folder)
-        return moveFiles(src,dst),dst
+        return moveFiles(src,dst),dst_folder
     return False,'Others(Not_moved)'
 
 def moveFiles(src,dst):
