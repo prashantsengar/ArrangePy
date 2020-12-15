@@ -1,9 +1,6 @@
 import os
-import shutil
 from move_files import *
-import sys
 from configure import configur
-import re
 
 RESULT_DIR = "CleanedPy"
 FOLDER_TYPES = configur()
