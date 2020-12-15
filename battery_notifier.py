@@ -4,6 +4,7 @@ from pynotifier import Notification
 import pandas as pd
 import datetime
 import numpy as np
+import os
 
 
 def get_info():
@@ -131,23 +132,24 @@ def start_fn():
     Creates a file and start the main fn.
 
     """
-    new_data = {
-        "Date": [],
-        "Time": [],
-        "Level": [],
-        "Status": [],
-        "Charge %": [],
-        "Minutes": [],
-        "From": [],
-        "To": [],
-        "CPU_Usage": [],
-        "CPU_Frequency": [],
-        "Cores": [],
-        "RAM_Usage": [],
-    }
-    df = pd.DataFrame.from_dict(new_data)
     file = "log.csv"
-    df.to_csv(file, index=False)
+    if not os.path.isfile(file):
+        new_data = {
+            "Date": [],
+            "Time": [],
+            "Level": [],
+            "Status": [],
+            "Charge %": [],
+            "Minutes": [],
+            "From": [],
+            "To": [],
+            "CPU_Usage": [],
+            "CPU_Frequency": [],
+            "Cores": [],
+            "RAM_Usage": [],
+        }
+        df = pd.DataFrame.from_dict(new_data)
+        df.to_csv(file, index=False)
     main(file)
 
 
