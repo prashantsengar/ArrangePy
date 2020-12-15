@@ -7,6 +7,12 @@ FOLDER_TYPES = configur()
 
 
 def strong_arrange(root, destination, index):
+    try:
+        X = int(input("ARE YOU SURE YOU WANT TO PERFORM A STRONG ARRANGE?\n(Enter \"1\" to confirm, \"0\" to exit)"))
+    except:
+        X = 0
+    if not X == 1:
+        return False
     TOTAL_COUNT = {}
     for foldername, subfolder, filenames in os.walk(root):
         for file in filenames:
