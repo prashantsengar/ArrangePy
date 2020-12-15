@@ -7,8 +7,8 @@ def makeFolders(root, lst):
     create that category name folder in RESULT_DIR
     """
     if os.path.exists(root) is False:
-        os.mkdirs(root)
+        os.mkdir(root)
 
     for name in lst:
         if name not in os.listdir(root):
-            os.mkdirs(os.path.join(root, name))
+            os.mkdir(os.path.join(root, name))
