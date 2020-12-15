@@ -45,9 +45,6 @@ if __name__ == "__main__":
     message = "Result"
     others = "Others(Not_moved)"
     print(f"{message:*^30s}")
-    if res == False:
-        print("Arrange Cancelled")
-        sys.exit(0)
     for key, value in res.items():
         if key == others:
             continue
