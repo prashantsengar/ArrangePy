@@ -3,7 +3,6 @@
 
 import os
 import sys
-from move_files import *
 from configure import configur
 from strong_arrange import strong_arrange
 from weak_arrange import weak_arrange
