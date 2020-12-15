@@ -3,9 +3,6 @@
 
 import os
 import sys
-import shutil
-import configparser
-import re
 from move_files import *
 from configure import configur
 from strong_arrange import strong_arrange
