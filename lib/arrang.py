@@ -1,5 +1,5 @@
 import os
-import bin.utils as utils
+import lib.utils
 import sys
 import time
 
@@ -29,7 +29,9 @@ def strong_arrange(root, destination, index, warn=True):
     for foldername, subfolder, filenames in os.walk(root):
         for file in filenames:
             if os.path.isfile(os.path.join(foldername, file)):
-                status, types = utils.startProcess(foldername, file, index, destination)
+                status, types = lib.utils.startProcess(
+                    foldername, file, index, destination
+                )
                 if types in TOTAL_COUNT:
                     TOTAL_COUNT[types] = TOTAL_COUNT[types] + 1
                 else:
@@ -41,7 +43,7 @@ def weak_arrange(root, destination, index):
     TOTAL_COUNT = {}
     for file in os.listdir(root):
         if os.path.isfile(os.path.join(root, file)):
-            status, types = utils.startProcess(root, file, index, destination)
+            status, types = lib.utils.startProcess(root, file, index, destination)
             if types in TOTAL_COUNT:
                 TOTAL_COUNT[types] = TOTAL_COUNT[types] + 1
             else:
