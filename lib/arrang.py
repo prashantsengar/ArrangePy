@@ -5,6 +5,11 @@ import time
 
 
 def strong_arrange(root, destination, index, warn=True):
+    """
+    Deploys strong arrange function that arranges files
+    from current folder and subfolders into specified categories
+
+    """
     if warn == True:
         print(
             "You are going to strong arrange",
@@ -40,6 +45,11 @@ def strong_arrange(root, destination, index, warn=True):
 
 
 def weak_arrange(root, destination, index):
+    """
+    Deploys weak arrange function that arranges files only
+    from current folder into specified categories
+
+    """
     TOTAL_COUNT = {}
     for file in os.listdir(root):
         if os.path.isfile(os.path.join(root, file)):

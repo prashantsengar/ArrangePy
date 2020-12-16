@@ -23,6 +23,7 @@ def moveFiles(src, dst):
     """
     Accept source and destination and move files .
     Return True if File is Copied other wise False
+
     """
     try:
         shutil.move(src, dst)
@@ -36,6 +37,7 @@ def identifyType(ext, lst):
     """
     Accept extenssion Example .pdf .mp4 and
     return a category type from FOLDER_TYPES Dictionary
+
     """
     for (key, value) in lst.items():
         if ext[1:] in value:
@@ -47,6 +49,7 @@ def makeFolders(root, lst):
     """
     Accept A List of Folder name and
     create that category name folder in RESULT_DIR
+
     """
     if os.path.exists(root) is False:
         os.makedirs(root)
@@ -57,6 +60,11 @@ def makeFolders(root, lst):
 
 
 def configur():
+    """
+    Read configuration file and create index of
+    extentions with respect to their folder types
+    
+    """
     config = configparser.ConfigParser()
     config.read("config.ini")
     extension = config["ext"]
