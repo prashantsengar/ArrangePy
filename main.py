@@ -3,7 +3,7 @@
 
 import os
 import sys
-import bin.arrange
+import bin.arrang
 import bin.utils
 
 
@@ -26,14 +26,16 @@ if __name__ == "__main__":
 
     choice = int(
         input(
-            "Press [1]: for Weak arrange\nPress [2]: for Strong arrange\nPress [0]: to exit\nOption: "
+            "Press [1]: for Weak arrange"+
+            "\nPress [2]: for Strong arrange"+
+            "\nPress [0]: to exit\nOption: "
         )
     )
 
     if choice == 1:
-        res = bin.arrange.weak_arrange(root, destination, FOLDER_TYPES)
+        res = bin.arrang.weak_arrange(root, destination, FOLDER_TYPES)
     elif choice == 2:
-        res = bin.arrange.strong_arrange(root, destination, FOLDER_TYPES)
+        res = bin.arrang.strong_arrange(root, destination, FOLDER_TYPES)
     elif choice == 0:
         sys.exit()
     else:
