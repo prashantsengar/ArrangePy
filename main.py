@@ -3,13 +3,12 @@
 
 import os
 import sys
-from configure import configur
-from strong_arrange import strong_arrange
-from weak_arrange import weak_arrange
-from make_folders import makeFolders
+import bin.arrange
+import bin.utils
+
 
 RESULT_DIR = "CleanedPy"
-FOLDER_TYPES = configur()
+FOLDER_TYPES = bin.utils.configur()
 
 try:
     TARGET_FOLDER = sys.argv[1]
@@ -20,21 +19,21 @@ if __name__ == "__main__":
 
     root = TARGET_FOLDER
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
-    makeFolders(destination, FOLDER_TYPES.keys())
+    bin.utils.makeFolders(destination, FOLDER_TYPES.keys())
 
     print("Arrange files")
     print("Cleaning:", root)
 
     choice = int(
         input(
-            "Press [1]: for Weak arrange\nPress [2]: for Strong arrange\n[0]: to exit\nOption: "
+            "Press [1]: for Weak arrange\nPress [2]: for Strong arrange\nPress [0]: to exit\nOption: "
         )
     )
 
     if choice == 1:
-        res = weak_arrange(root, destination, FOLDER_TYPES)
+        res = bin.arrange.weak_arrange(root, destination, FOLDER_TYPES)
     elif choice == 2:
-        res = strong_arrange(root, destination, FOLDER_TYPES)
+        res = bin.arrange.strong_arrange(root, destination, FOLDER_TYPES)
     elif choice == 0:
         sys.exit()
     else:
