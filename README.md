@@ -11,7 +11,7 @@ Organizes files in folders and helps you to clean your PC
   Task Scheduler.
 
 ## What it does
-Organizes the files based on their extensions in folders. It notifies about Battery Status giving you it's stats along with a csv file in which usage stats are also recorded. The Time Notifier file notifies you to take breaks for every 20 minutes based on 20-20-20 rule by displaying a tkinter window box for 20 seconds with other options too.
+Organizes the files based on their extensions in folders. It notifies about Battery Status giving you it's stats along with a csv file in which usage stats are also recorded. The Time Notifier file notifies you to take breaks for every 20 minutes based on 20-20-20 rule by displaying a tkinter window box for 20 seconds with other options too along with displaying a quote.
 
 ### Features
 Currently it has 2 modes
