@@ -11,8 +11,7 @@ Organizes files in folders and helps you to clean your PC
   Task Scheduler.
 
 ## What it does
-Organizes the files based on their extensions in folders. It Notifies about Battery Status. It Also Notifies the Time
-spent from the start of the Program i.e., if it is in startup the time spent by you for every half-an-hour.
+Organizes the files based on their extensions in folders. It notifies about Battery Status giving you it's stats along with a csv file in which usage stats are also recorded. The Time Notifier file notifies you to take breaks for every 20 minutes based on 20-20-20 rule by displaying a tkinter window box for 20 seconds with other options too.
 
 ### Features
 Currently it has 2 modes
@@ -26,11 +25,4 @@ Currently it has 2 modes
 
 - Add a feature to walk through the PC and get info about large files
 - Find duplicate files in PC
-
-[comment]: <> (### Make a complete PC suite by integrating other features)
-
-[comment]: <> (- Feature to notify the user to take breaks)
-
-[comment]: <> (- Notify about battery percentage as in this &#40;repo&#41;[https://github.com/prashantsengar/BatteryNotifier])
-
-[comment]: <> (- Get info about PC health)
+- Get info about PC health
