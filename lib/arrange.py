@@ -10,7 +10,7 @@ def strong_arrange(root, destination, index, warn=True):
     from current folder and subfolders into specified categories
 
     """
-    if warn == True:
+    if warn is True:
         print(
             "You are going to strong arrange",
             f"the directory {root}.",
