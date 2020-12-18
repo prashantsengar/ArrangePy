@@ -59,7 +59,7 @@ def makeFolders(root, lst):
             os.makedirs(os.path.join(root, name))
 
 
-def configur():
+def configure():
     """
     Read configuration file and create index of
     extentions with respect to their folder types
