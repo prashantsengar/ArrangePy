@@ -78,7 +78,7 @@ class App(tkinter.Tk):
             ),
             font=tkinter.font.Font(size=15),
         )
-        self.geometry("700x220")
+        self.geometry("700x250")
         file = open("quotes.txt", "r")
         lst = file.read().splitlines()
         quote = choice(lst)
@@ -88,12 +88,17 @@ class App(tkinter.Tk):
         self.present_lab = tkinter.Label(
             self, text=it_is_time_for_notify(), font=tkinter.font.Font(size=15)
         )
+        self.timer = 21
+        self.countdown = tkinter.Label(
+            self, text=str(self.timer), font=tkinter.font.Font(size=25)
+        )
         self.lab.grid(column=0, row=0)
-        self.quote_lab.grid(column=0, row=4)
+        self.quote_lab.grid(column=0, row=5)
         self.present_lab.grid(column=0, row=1)
+        self.countdown.grid(column=0, row=2)
         selfWidth = self.winfo_reqwidth()
         selfHeight = self.winfo_reqheight()
-        positionRight = int(self.winfo_screenwidth() / 2 - selfWidth)
+        positionRight = int(self.winfo_screenwidth() / 2 - 2*selfWidth)
         positionDown = int(self.winfo_screenheight() / 2 - selfHeight)
         self.geometry("+{}+{}".format(positionRight, positionDown))
         self.attributes("-topmost", True)
@@ -105,7 +110,7 @@ class App(tkinter.Tk):
             command=lambda: snooze(self),
             font=tkinter.font.Font(size=15),
         )
-        bt1.grid(column=0, row=2)
+        bt1.grid(column=0, row=3)
         bt2 = tkinter.Button(
             self,
             text="Go for Next Break",
@@ -114,7 +119,7 @@ class App(tkinter.Tk):
             command=lambda: go_next(self),
             font=tkinter.font.Font(size=15),
         )
-        bt2.grid(column=0, row=3)
+        bt2.grid(column=0, row=4)
         self.update_clock()
         self.mainloop()
 
@@ -125,6 +130,10 @@ class App(tkinter.Tk):
 
         """
         self.present_lab.configure(text=it_is_time_for_notify())
+        self.timer -= 1
+        if self.timer == 0:
+            go_next(self)
+        self.countdown.configure(text=str(self.timer))
         self.after(1000, self.update_clock)
 
 
