@@ -1,18 +1,36 @@
-#arrange.py
-#Arranges the fiels according to their types for later classification
-#uses shutil, os
+# arrange.py
+# Arranges the fiels according to their types for later classification
 
 import os
+import sys
 import shutil
+import configparser
+import re
+import sys
+import time
 
-FOLDER_TYPES = {'pPDF':['pdf'],
-              'Pimages':['png','jpeg','jpg','gif', 'tiff', 'psd', 'ico'],
-              'Pvideos':['mp4','mkv','avi','3gp'],
-              'Paudios':['mp3','wav'],
-              'Pprograms':['exe', 'app', 'out'],
-              'Pdocs':['xlsx','doc','xlsx','pptx','csv','txt','ppt', 'odt', 'rtf', 'ods', 'txt', 'pps']
-              }
+'''
+Read Configuration file for Extensions using RegEx
+'''
+config=configparser.ConfigParser()
+config.read('config.ini')
+extension=config['ext']
+
+# RegEX reading of config file for faster execution
+p = re.compile(r'\'(.*?)\'')
+FOLDER_TYPES = {key:extension[key] for key in extension}
+for key in FOLDER_TYPES:
+    FOLDER_TYPES[key] = p.findall(FOLDER_TYPES[key])
+
+'''
+Takes Command Line Argument for File Location.
+Defaults to Current location if not specified
+'''
 RESULT_DIR = 'CleanedPy'
+try:
+    RESULT_DIR = os.path.join(sys.argv[1],RESULT_DIR)
+except:
+    pass
 
 def identifyType(ext):
     '''
@@ -22,7 +40,6 @@ def identifyType(ext):
     for key,value in FOLDER_TYPES.items():
         if ext[1:] in value:
             return key
-            break
     else:
         return None
 
@@ -32,15 +49,12 @@ def makeFolders(lst):
     Accept A List of Folder name and
     create that category name folder in RESULT_DIR
     '''
-    
     if os.path.exists(RESULT_DIR) is False:
         os.mkdir(RESULT_DIR)
                       
     for name in lst:
-        if name in os.listdir(RESULT_DIR):
-            return
-        os.mkdir(os.path.join(RESULT_DIR,name))
-
+        if name not in os.listdir(RESULT_DIR):
+            os.mkdir(os.path.join(RESULT_DIR,name))
 
 def moveFiles(src,dst):
     '''
@@ -49,13 +63,12 @@ def moveFiles(src,dst):
     '''
     res = True
     try:
-        pass
         shutil.move(src,os.path.join(RESULT_DIR,dst))
     except:
         res = False
     return res
 
-#Create Output and category folder if not Exists
+# Create Output and category folder if not Exists
 makeFolders(FOLDER_TYPES.keys())
 
 def startProcess(folder,file):
@@ -71,7 +84,24 @@ def startProcess(folder,file):
         return moveFiles(src,dst),dst
     return False,'Others(Not_moved)'
 
-def strong_arrange():
+def strong_arrange(warn=True):
+    if warn == True:
+        print("You are going to strong arrange ",
+              "the directory DIRECTORY_NAME. ",
+              "It will rearrange all the files ",
+              "in the subfolders as well. ",
+              "It might cause issues if you ",
+              "have added wrong extensions ",
+              "in the config.ini file and run ",
+              "the program in a sensitive directory. ",
+              "You still have 5 seconds to ",
+              "cancel it if you want to review anything. ",
+              "(Press Ctrl+C to abort)")
+        try:
+            time.sleep(5)
+        except KeyboardInterrupt:
+            sys.exit()
+
     TOTAL_COUNT={}
     for foldername, subfolders, filenames in os.walk(folder):
         for file in filenames:
@@ -82,6 +112,7 @@ def strong_arrange():
                else:
                    TOTAL_COUNT[types] = 1
     return TOTAL_COUNT
+  
 def arrange():
     TOTAL_COUNT = {}
     for file in os.listdir(folder):
@@ -96,7 +127,10 @@ def arrange():
 if __name__ == '__main__':
 
     print("Arrange files")
-    folder=os.getcwd()
+    try:
+        folder = sys.argv[1]
+    except:
+        folder = os.getcwd()
     print(folder)
 
     choice = int(input("Press 1 for Weak arrange\nPress 2 for Strong arrange\n0 to exit\noption:"))
@@ -106,9 +140,9 @@ if __name__ == '__main__':
     if choice == 2:
         res = strong_arrange()
     if choice == 0:
-        exit(0)
+        sys.exit()
 
-    #Final Result
+    # Final Result
     message = "Result"
     others="Others(Not_moved)"
     print(f'{message:*^30s}')
