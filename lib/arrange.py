@@ -20,15 +20,14 @@ def strong_arrange(root, destination, index, warn=True):
             "have added wrong extensions",
             "in the config.ini file and run",
             "the program in a sensitive directory.",
-            "You still have 10 seconds to",
+            "You still have 7 seconds to",
             "cancel it if you want to review anything.",
             "\n(Press Ctrl+C to abort)",
         )
         try:
-            time.sleep(10)
+            time.sleep(7)
         except KeyboardInterrupt:
             sys.exit()
-            return False
 
     TOTAL_COUNT = {}
     for foldername, subfolder, filenames in os.walk(root):
