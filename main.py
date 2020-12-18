@@ -1,14 +1,15 @@
-# arrange.py
-# Arranges the fiels according to their types for later classification
+# CleanPy
+# Arranges the files according to their types for later classification
+# https://github.com/prashantsengar/CleanPy
+# https://t.me/joinchat/INDdLlDf-SFDPURESGgdrQ
 
 import os
 import sys
-import lib.arrang
+import lib.arrange
 import lib.utils
 
-
 RESULT_DIR = "CleanedPy"
-FOLDER_TYPES = lib.utils.configur()
+FOLDER_TYPES = lib.utils.configure()
 
 try:
     TARGET_FOLDER = sys.argv[1]
@@ -21,8 +22,8 @@ if __name__ == "__main__":
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
 
-    print("Arrange files")
-    print("Cleaning:", root)
+    print("---CleanPy---")
+    print("Cleaning: ", root)
 
     choice = int(
         input(
@@ -33,9 +34,9 @@ if __name__ == "__main__":
     )
 
     if choice == 1:
-        res = lib.arrang.weak_arrange(root, destination, FOLDER_TYPES)
+        res = lib.arrange.weak_arrange(root, destination, FOLDER_TYPES)
     elif choice == 2:
-        res = lib.arrang.strong_arrange(root, destination, FOLDER_TYPES)
+        res = lib.arrange.strong_arrange(root, destination, FOLDER_TYPES)
     elif choice == 0:
         sys.exit()
     else:
