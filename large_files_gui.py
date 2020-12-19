@@ -1,4 +1,5 @@
 import os
+import sys
 import pandas as pd
 import time
 import tkinter
@@ -17,44 +18,36 @@ class file_data:
         return self.size > other.size
 
 
-class data:
-    def __init__(self, path):
-        self.path = path
-        self.file_lst = []
-        self.x = 0
-        self.info = []
-        self.thread = threading.Thread(target=self.walk_dir())
-        self.thread.start()
-        self.complete = False
-        self.now = " "
+class thread_with_trace(threading.Thread):
+    def __init__(self, *args, **keywords):
+        threading.Thread.__init__(self, *args, **keywords)
+        self.killed = False
 
-    def walk_dir(self):
-        for folderName, sub_folders, filenames in os.walk(self.path):
-            for filename in filenames:
-                pt = file_data()
-                pt.name = os.path.join(folderName, filename)
-                ext = os.stat(pt.name)
-                pt.size = ext.st_size
-                self.file_lst.append(pt)
-                self.x += 1
-                self.now = pt.name
-        self.sort_and_normalize()
+    def start(self):
+        self.__run_backup = self.run
+        self.run = self.__run
+        threading.Thread.start(self)
 
-    def sort_and_normalize(self):
-        self.file_lst.sort()
-        extensions = ["B", "KB", "MB", "GB", "TB"]
-        p = 0
-        self.info = [["Name", "Size", "Units"]]
-        for element in self.file_lst:
-            i = 0
-            p += element.size
-            while element.size > 1024.0:
-                element.size = element.size / 1024
-                i += 1
-            element.size = round(element.size, 3)
-            element.ext = extensions[i]
-            self.info.append([element.name, element.size, element.ext])
-        self.complete = True
+    def __run(self):
+        sys.settrace(self.globaltrace)
+        self.__run_backup()
+        self.run = self.__run_backup
+
+    def globaltrace(self, frame, event, arg):
+        if event == 'call':
+            return self.localtrace
+        else:
+            return None
+
+    def localtrace(self, frame, event, arg):
+        if self.killed:
+            if event == 'line':
+                # raise SystemExit()
+                pass
+        return self.localtrace
+
+    def kill(self):
+        self.killed = True
 
 
 class App(tkinter.Tk):
@@ -72,7 +65,7 @@ class App(tkinter.Tk):
         self.lst = []
         self.table_index = tkinter.IntVar()
         self.table_index.set(0)
-        self.thread = ""
+        self.thread = thread_with_trace(target=self.walk_dir)
         self.x = tkinter.IntVar()
         self.x.set(0)
         self.complete = False
@@ -125,15 +118,21 @@ class App(tkinter.Tk):
                 top = tkinter.Label(self, text=" ", font=tkinter.font.Font(size=10))
                 top.grid(column=y, row=x)
                 self.lst[-1].append(top)
+        self.save = tkinter.Label(self, text="      ", font=tkinter.font.Font(size=11))
+        self.save.grid(column=1, row=17)
         self.mainloop()
 
     def browse_dir(self):
+        if self.thread.is_alive():
+            self.thread.kill()
+            time.sleep(0.005)
         self.t1.configure(text="  ")
         self.t2.configure(text="  ")
         self.t3.configure(text="  ")
         for x in range(10):
             self.lst[x][0].configure(text="  ")
             self.lst[x][1].configure(text="  ")
+        self.save.configure(text="                       ")
         self.path = " "
         self.now = tkinter.StringVar()
         self.now.set(" ")
@@ -144,7 +143,6 @@ class App(tkinter.Tk):
         self.table_index.set(0)
         self.info = []
         self.file_lst = []
-        self.thread = ""
         self.x = tkinter.IntVar()
         self.x.set(0)
         self.complete = False
@@ -154,15 +152,11 @@ class App(tkinter.Tk):
         if len(pqr) >= 65:
             pqr = pqr[:30] + "..." + pqr[-30:]
         self.folder.configure(text=pqr)
-        self.thread = threading.Thread(target=self.walk_dir)
-        self.thread.start()
+        if os.path.isdir(self.path):
+            self.thread = thread_with_trace(target=self.walk_dir)
+            self.thread.start()
 
     def update_display(self):
-        """
-
-        This function updates the clock displayed on the window.
-
-        """
         d = "Scanning: " + str(self.now.get())
         if len(d) <= 50:
             d = d.center(50)
@@ -179,7 +173,6 @@ class App(tkinter.Tk):
         pg = round(pg, 3)
         pg = "  Total Size: " + str(pg) + " " + str(extensions[i])
         self.count.configure(text=str("Scanned: " + str(self.x.get()) + pg).center(50))
-        # Timer(2, function=self.update_clock).start()
 
     def walk_dir(self):
         st = time.time()
@@ -195,7 +188,7 @@ class App(tkinter.Tk):
                 ptr += pt.size
                 self.total.set(ptr)
                 self.x.set(self.x.get() + 1)
-                if time.time() - st > 1:
+                if time.time() - st > 0.5:
                     self.update_display()
                     st = time.time()
         self.update_display()
@@ -246,6 +239,16 @@ class App(tkinter.Tk):
                 self.lst[x][0].configure(text="  ")
                 self.lst[x][1].configure(text="  ")
 
+    def save_file(self, filename):
+        if self.complete:
+            df = pd.DataFrame(self.info)
+            df.to_excel(f"{filename}.xlsx")
+            self.save.configure(text=f"Data saved to {filename}.xlsx file.")
+        elif not self.complete:
+            self.save.configure(text="Data is being collected!!")
+        elif len(self.info) <= 1:
+            self.save.configure(text="N0 DATA!!!")
+
     def display_table(self):
         self.t1.configure(text="Listing of Files")
         self.t2.configure(text="Name of the File")
@@ -277,6 +280,19 @@ class App(tkinter.Tk):
             font=tkinter.font.Font(size=12),
         )
         bt_prev.grid(column=0, row=14)
+        tkinter.Label(text="            ").grid(column=0, row=15)
+        save_data = tkinter.Entry(self, width=30, font=tkinter.font.Font(size=13))
+        save_data.insert(0, "File Name to save to {Name}.xlsx")
+        save_data.grid(column=0, row=16)
+        bt_save = tkinter.Button(
+            self,
+            text="Save File".center(50, " "),
+            padx=1,
+            pady=5,
+            command=lambda: self.save_file(save_data.get()),
+            font=tkinter.font.Font(size=12),
+        )
+        bt_save.grid(column=1, row=16)
 
 
 App()
