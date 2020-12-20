@@ -7,7 +7,7 @@ Organizes files in folders and helps you to clean your PC
 ## How to use
 - `git clone https://github.com/prashantsengar/CleanPy.git`
 - `cd CleanPy`
-- `python arrange.py`
+- `python main.py`
 
 ## What it does
 Organizes the files based on their extensions in folders. 
