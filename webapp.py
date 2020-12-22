@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 def startwork():
-    ''' This will create folders to keep files according to their file types.  '''
+    ''' Create folders to keep files according to their file types'''
     nonlocal destination
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
@@ -19,7 +19,7 @@ def startwork():
 
 
 def dashboard():
-    '''The page where the number of items present in the input location is given'''
+    '''Scan the location for items'''
     directory = TARGET_FOLDER
     folder_count = (len([1 for x in list(os.scandir(directory)) if x.is_dir()]))  # counting files and folders
     file_count = (len([1 for x in list(os.scandir(directory)) if x.is_file()]))
@@ -49,7 +49,7 @@ def inputuser():
 
 
 def changingPage():
-    '''Initiate and asks for the address as text input, where the app need to do the cleaning work'''
+    '''Ask for the location to do the cleaning work'''
     return render_template('change.html')
 
 
@@ -57,9 +57,9 @@ def changingPage():
 
 
 def stdScan():
-    '''Initiate the arrange function, and redirect to report page after the process is complete'''
+    '''Initiate the arrange and redirect to report page'''
     startwork()
-    report = lib.arrange.weak_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)              # taking reports of the file transfer
+    report = lib.arrange.weak_arrange(TARGET_FOLDER, destination, FOLDER_TYPES) # taking reports of the file transfer
     return render_template('completed.html', res=report)
 
 
@@ -67,7 +67,7 @@ def stdScan():
 
 
 def deepScan():
-    '''Initiate the strong arrange function, and redirect to the report page after the transfer is complete'''
+    '''Initiate the strong arrange and redirect to report page'''
     startwork()
     report = lib.arrange.strong_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)
     return render_template('completed.html', res=report)
@@ -77,13 +77,13 @@ def deepScan():
 
 
 def close():
-    '''Turn the web server OFF '''
+    '''Turn the web server OFF'''
     shutdown_server()
     return 'Server shutting down..'
 
 
 if __name__ == '__main__':
     print("Running the program..")
-    time.sleep(0.5)                                                  # Delay the run, to give the feeling of loading the app
-    webbrowser.open('http://127.0.0.1:5000/changelocation')          #open the webpage automatically
+    time.sleep(0.5)                                         #Delay the run, just for fun
+    webbrowser.open('http://127.0.0.1:5000/changelocation') #open the webpage automatically
     app.run(debug=True)                                              
