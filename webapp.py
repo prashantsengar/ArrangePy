@@ -11,7 +11,7 @@ destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
 
 
 def startwork():
-    '''Create folders to keep files according to their file types'''
+    """Create folders to keep files according to their file types"""
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
 
@@ -19,7 +19,7 @@ def startwork():
 
 @app.route('/dashboard')
 def dashboard():
-    '''Scan the location for items'''
+    """Scan the location for items"""
     directory = TARGET_FOLDER
     lisofElements = list(os.scandir(directory))
     folder_count = (len([1 for x in lisofElements if x.is_dir()]))
@@ -30,7 +30,7 @@ def dashboard():
 
 @app.route('/input', methods=['POST', 'GET'])
 def inputuser():
-    '''Take the input of the address from HTML methods'''
+    """Take the input of the address from HTML methods"""
     if request.method == 'POST':
         val = request.form['newaddress']
     else:
@@ -44,13 +44,13 @@ def inputuser():
 
 @app.route('/changelocation')
 def changingPage():
-    '''Ask for the location to do the cleaning work'''
+    """Ask for the location to do the cleaning work"""
     return render_template('change.html')
 
 
 @app.route('/standardscan')
 def stdScan():
-    '''Initiate the arrange and redirect to report page'''
+    """Initiate the arrange and redirect to report page"""
     startwork()
     report = lib.arrange.weak_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)
     return render_template('completed.html', res=report)
@@ -58,7 +58,7 @@ def stdScan():
 
 @app.route('/deepscan')
 def deepScan():
-    '''Initiate the strong arrange and redirect to report page'''
+    """Initiate the strong arrange and redirect to report page"""
     startwork()
     report = lib.arrange.strong_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)
     return render_template('completed.html', res=report)
@@ -66,7 +66,7 @@ def deepScan():
 
 @app.route('/closetheapp')
 def close():
-    '''Turn the web server OFF'''
+    """Turn the web server OFF"""
     shutdown_server()
     return 'Server shutting down..'
 
