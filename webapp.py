@@ -11,7 +11,7 @@ destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
 
 
 def startwork():
-    ''' Create folders to keep files according to their file types'''
+    '''Create folders to keep files according to their file types'''
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
 
