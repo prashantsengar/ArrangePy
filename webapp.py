@@ -16,6 +16,7 @@ def startwork():
 
 @app.route('/dashboard')
 def dashboard():
+    '''The page where the number of items present in the input location is given'''
     directory = TARGET_FOLDER
     folder_count = (len([1 for x in list(os.scandir(directory)) if x.is_dir()]))  # counting files and folders
     file_count = (len([1 for x in list(os.scandir(directory)) if x.is_file()]))
@@ -25,6 +26,7 @@ def dashboard():
 
 @app.route('/input',methods = ['POST', 'GET'])
 def inputuser():
+    '''Take the input of the address from HTML methods'''
     if request.method == 'POST':
       val = request.form['newaddress']
     else:
@@ -38,24 +40,29 @@ def inputuser():
 
 @app.route('/changelocation')
 def changingPage():
+    '''Initiate and asks for the address as text input, where the app need to do the cleaning work'''
     return render_template('change.html')
 
 
 @app.route('/standardscan')
 def stdScan():
+    '''Initiate the arrange function from the main module, and redirect to report page'''
     startwork()
     report = lib.arrange.weak_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)              # taking reports of the file transfer
     return render_template('completed.html', res=report)
 
 @app.route('/deepscan')
 def deepScan():
+    '''Initiate the strong arrange function from main module, and redirect to the report page after the transfer is complete'''
     startwork()
     report = lib.arrange.strong_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)
     return render_template('completed.html', res=report)
 
 @app.route('/closetheapp')
 def close():
-    exit()
+    '''Turn the web server OFF '''
+    shutdown_server()
+    return 'Server shutting down..'
     
 if __name__ == '__main__':
     print("Running the program..")
