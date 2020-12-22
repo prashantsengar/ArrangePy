@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Clean Py</title>
+  <style type="text/css">
+  .content {
+  max-width: 500px;
+  margin: auto;
+  }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0px;
+    }
+    body {
+      background-color: transparent;
+      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      transform-style: preserve-3d;
+    }
+    .gwd-span-1yhv {
+      width: 441px;
+      transform-origin: 50% 50% 0px;
+      text-align: center;
+      font-size: 30px;
+      font-family: "Arial Black";
+      height: 43px;
+      
+    }
+    .gwd-span-1csu {
+      width: 441px;
+      font-family: "Arial Black";
+      text-align: left;
+      font-size: 15px;
+      height: 156px;
+      transform-origin: 50% 50% 0px;
+    }
+    .gwd-span-1139 {
+      font-family: "Times New Roman";
+      font-size: 15px;
+    }
+    .gwd-button-hnfe {
+      width: auto;
+      height: 24px;
+      background-image: none;
+      background-color: rgba(39, 238, 118, 0.9);
+      font-weight: bold;
+      color: rgb(9, 9, 9);
+    }
+    .gwd-button-um3e {
+      width: auto;
+      height:auto;
+      background-image: none;
+      color: rgb(255, 255, 255);
+      font-weight: bold;
+      background-color: rgb(184, 49, 49);
+    }
+    .myButton {
+      box-shadow:inset 0px 1px 0px 0px #ffffff;
+      background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+      background-color:#ffffff;
+      border-radius:6px;
+      border:1px solid #dcdcdc;
+      display:inline-block;
+      cursor:pointer;
+      color:#666666;
+      font-family:Arial;
+      font-size:15px;
+      font-weight:bold;
+      padding:5px 25px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #ffffff;
+    }
+    .myButton:hover {
+      background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+      background-color:#f6f6f6;
+    }
+    .myButton:active {
+      position:relative;
+      top:1px;
+    }
+
+
+    .gwd-span-s0wo {
+      width: 441px;
+      height: 43px;
+    }
+  </style>
+</head>
+
+<body class="htmlNoPages">
+  <div class="content">
+  <span class="gwd-span-1yhv">Welcome To File Cleaner&nbsp;</span>
+  <p class="gwd-span-1csu">Current Directory : 
+    <button id="singlebutton" name="singlebutton" class="myButton" onclick="window.location.href='changelocation';">Change</button>
+    <span class="gwd-span-1139">{{workdir}}<br>
+      It has {{nfile}}&nbsp; files and&nbsp;{{nfol}} folders,<br>Total items = {{total}}<br><br><br></span></p>
+  <button id="button_1" class="gwd-button-hnfe" onclick="window.location.href='standardscan';">SimpleScan</button>
+  <button id="button_2" class="gwd-button-um3e" data-gwd-name="deepscan" onclick="window.location.href='deepscan';">Deep Scan</button><br>
+  <span class="gwd-span-s0wo">Visit our Github Page : <a href="https://github.com/prashantsengar/CleanPy" target="_blank">github.com/cleanpy</a></span></body>
+  <p style="text-align:right"><a href="Close the app">Close App</a></p>
+  </div>
+
+</body>
+</html>
