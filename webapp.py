@@ -13,7 +13,7 @@ def startwork():
     nonlocal destination
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
-    return
+
 
 
 @app.route('/dashboard')
@@ -53,7 +53,7 @@ def changingPage():
 def stdScan():
     '''Initiate the arrange and redirect to report page'''
     startwork()
-    report = lib.arrange.weak_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)  # taking reports of the file transfer
+    report = lib.arrange.weak_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)
     return render_template('completed.html', res=report)
 
 
@@ -74,6 +74,7 @@ def close():
 
 if __name__ == '__main__':
     print("Running the program..")
-    time.sleep(0.5)                                          # Delay the run, just for fun
-    webbrowser.open('http://127.0.0.1:5000/changelocation')  # open the webpage automatically
+    time.sleep(0.5)
+    linkofPage = 'http://127.0.0.1:5000/changelocation'
+    webbrowser.open(linkofPage)
     app.run(debug=True)
