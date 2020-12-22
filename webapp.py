@@ -12,9 +12,9 @@ destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
 
 def startwork():
     """Create folders to keep files according to their file types"""
+    global destination
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
-
 
 
 @app.route('/dashboard')
@@ -67,7 +67,7 @@ def deepScan():
 @app.route('/closetheapp')
 def close():
     """Turn the web server OFF"""
-    shutdown_server()
+    exit()
     return 'Server shutting down..'
 
 
