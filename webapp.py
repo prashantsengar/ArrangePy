@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+from main import RESULT_DIR, FOLDER_TYPES, TARGET_FOLDER
 import lib.arrange
 import lib.utils
 import webbrowser
@@ -6,11 +7,11 @@ import time
 import os
 
 app = Flask(__name__)
+destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
 
 
 def startwork():
     ''' Create folders to keep files according to their file types'''
-    nonlocal destination
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
 
@@ -35,12 +36,10 @@ def inputuser():
     else:
         val = request.args.get('newaddress')
     if os.path.isdir(val):
-        nonlocal TARGET_FOLDER
+        global TARGET_FOLDER
         TARGET_FOLDER = str(val)
         return redirect(url_for('dashboard'))
-
-    else:
-        return render_template("error404.html")
+    return render_template("error404.html")
 
 
 @app.route('/changelocation')
