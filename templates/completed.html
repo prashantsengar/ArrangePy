@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>complete</title>
+  <meta name="generator" content="Google Web Designer 10.0.1.1204">
+  <style type="text/css">
+    .content {
+        max-width: 500px;
+        margin: auto;
+        }
+          html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+          }
+          body {
+            background-color: transparent;
+            transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+            transform-style: preserve-3d;
+          }
+          .content {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 10px;
+          }
+    .gwd-p-1w1z {
+      transform-origin: 50% 50% 0px;
+      font-weight: bold;
+      font-family: "Arial Black";
+      color: rgb(226, 21, 21);
+    }
+    .gwd-p-153m {
+      width: 254px;
+      font-family: "Arial Black";
+      font-weight: bold;
+      text-align: left;
+      background-image: none;
+      background-color: rgb(241, 229, 229);
+      transform-origin: 50% 50% 0px;
+      height: 139px;
+      color: rgb(0, 3, 12);
+    }
+    .gwd-span-1djn {
+      font-weight: normal;
+      color: rgb(19, 213, 152);
+    }
+  </style>
+</head>
+
+  <body class="content">
+    <p class="gwd-p-1w1z">File Cleaning Completed</p>
+    <p class="gwd-p-fmzj">Here is the report.</p>
+    <p class="gwd-p-153m">
+      {% for key,value in res.items() %} 
+        {% if 'Others' in key %}
+        {% else %}
+        {{value}}&nbsp; &nbsp; &nbsp; moved to <span class="gwd-span-1djn">{{key}}</span><br>
+        {%endif %}
+      {% endfor %}
+      {{res['Others(Not_moved)']}}&nbsp; &nbsp; &nbsp; are not moved<br>
+    </p>
+    <br><br>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_Mt38fp.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"    autoplay></lottie-player>
+    <br>
+    <button id="singlebutton" name="singlebutton" class="btn btn-warning" onclick="window.location.href='http://127.0.0.1:5000/dashboard';">Go back</button>
+  
+  </body>
+
+</html>
