@@ -12,20 +12,20 @@ destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
 
 def startwork():
     """Create folders to keep files according to their file types"""
-    global destination
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
 
 
-@app.route('/dashboard')
-def dashboard():
+@app.route('/dashboard/<address>')
+def dashboard(address):
     """Scan the location for items"""
-    directory = TARGET_FOLDER
-    lisofElements = list(os.scandir(directory))
-    folder_count = (len([1 for x in lisofElements if x.is_dir()]))
-    file_count = (len([1 for x in list(os.scandir(directory)) if x.is_file()]))
-    total_items = folder_count + file_count
-    return render_template("index.html", nfol=folder_count, nfile=file_count, total=total_items, workdir=directory)
+    dataPacket = {}
+    Elements = list(os.scandir(address))
+    dataPacket['folder_count'] = (len([1 for x in Elements if x.is_dir()]))
+    dataPacket['file_count'] = (len([1 for x in Elements if x.is_file()]))
+    dataPacket['total_items'] = len(Elements)
+    dataPacket['address'] = address
+    return render_template("index.html",data = dataPacket)
 
 
 @app.route('/input', methods=['POST', 'GET'])
@@ -36,9 +36,8 @@ def inputuser():
     else:
         val = request.args.get('newaddress')
     if os.path.isdir(val):
-        global TARGET_FOLDER
         TARGET_FOLDER = str(val)
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('dashboard', address=TARGET_FOLDER))
     return render_template("error404.html")
 
 
@@ -48,15 +47,15 @@ def changingPage():
     return render_template('change.html')
 
 
-@app.route('/standardscan')
-def stdScan():
+@app.route('/dashboard/standardscan')
+def standardScan():
     """Initiate the arrange and redirect to report page"""
     startwork()
     report = lib.arrange.weak_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)
     return render_template('completed.html', res=report)
 
 
-@app.route('/deepscan')
+@app.route('/dashboard/deepscan')
 def deepScan():
     """Initiate the strong arrange and redirect to report page"""
     startwork()
@@ -67,8 +66,9 @@ def deepScan():
 @app.route('/closetheapp')
 def close():
     """Turn the web server OFF"""
-    exit()
-    return 'Server shutting down..'
+    
+    return '''Server shutting down.., close this browser tab 
+    and close the python compiler by using ctrl+c'''
 
 
 if __name__ == '__main__':
