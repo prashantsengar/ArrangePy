@@ -62,25 +62,25 @@ def changingPage():
 @app.route('/dashboard/standardscan')
 def standardScan():
     """Initiate the arrange and redirect to report page"""
-    TARGET_FOLDER = gettheAddress()
-    destination = startwork(TARGET_FOLDER)
-    report = lib.arrange.weak_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)
+    TARGET_DIR = gettheAddress()
+    destination = startwork(TARGET_DIR)
+    report = lib.arrange.weak_arrange(TARGET_DIR, destination, FOLDER_TYPES)
     return render_template('completed.html', res=report)
 
 
 @app.route('/dashboard/deepscan')
 def deepScan():
     """Initiate the strong arrange and redirect to report page"""
-    TARGET_FOLDER = gettheAddress()
-    destination = startwork(TARGET_FOLDER)
-    report = lib.arrange.strong_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)
+    TARGET_DIR = gettheAddress()
+    destination = startwork(TARGET_DIR)
+    report = lib.arrange.strong_arrange(TARGET_DIR, destination, FOLDER_TYPES)
     return render_template('completed.html', res=report)
 
 
 @app.route('/dashboard/quit')
 def close():
     """Turn the web server OFF"""
-    return '''Server shutting down.., close this browser tab 
+    return '''Server shutting down.., close this browser tab
     and close the python compiler by using ctrl+c'''
 
 
