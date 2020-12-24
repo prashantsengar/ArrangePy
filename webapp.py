@@ -7,21 +7,17 @@ import time
 import os
 
 app = Flask(__name__)
-#destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
 
 
 def gettheAddress():
-    """
-    read the cookies to find address 
-    else return the installation directory
-    """
+    """Read cache file and create target folder"""
     temp = request.cookies.get('directory')
     if temp is None:
         address = TARGET_FOLDER
     else:
         address = temp
     return address
-    
+
 
 def startwork(TARGET_FOLDER):
     """Create folders to keep files according to their file types"""
@@ -40,7 +36,7 @@ def dashboard():
     dataPacket['file_count'] = (len([1 for x in Elements if x.is_file()]))
     dataPacket['total_items'] = len(Elements)
     dataPacket['address'] = address
-    return render_template("index.html",data = dataPacket)
+    return render_template("index.html", data=dataPacket)
 
 
 @app.route('/input', methods=['POST', 'GET'])
@@ -84,7 +80,6 @@ def deepScan():
 @app.route('/dashboard/quit')
 def close():
     """Turn the web server OFF"""
-    
     return '''Server shutting down.., close this browser tab 
     and close the python compiler by using ctrl+c'''
 
@@ -94,4 +89,4 @@ if __name__ == '__main__':
     time.sleep(0.5)
     linkofPage = 'http://127.0.0.1:45201/dashboard'
     webbrowser.open(linkofPage)
-app.run('localhost', port=45201, debug=True)
+app.run('localhost', port=45201)
