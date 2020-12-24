@@ -60,10 +60,11 @@
         {{value}}&nbsp; &nbsp; &nbsp; moved to <span class="gwd-span-1djn">{{key}}</span><br>
         {%endif %}
       {% endfor %}
-      {% if res['Others(Not_moved)'] is none %} 
-        0
+
+      {% if res['Others(Not_moved)'] in (None, 0) %} 
+        <span>0</span>
       {% else %}
-        {{ res['Others(Not_moved)'] }}
+        {{res['Others(Not_moved)']}}
       {%endif%}
       &nbsp; &nbsp; &nbsp; are not moved<br>
     </p>
