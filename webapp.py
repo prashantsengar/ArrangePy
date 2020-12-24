@@ -19,9 +19,9 @@ def gettheAddress():
     return address
 
 
-def startwork(TARGET_FOLDER):
+def startwork(TARGET):
     """Create folders to keep files according to their file types"""
-    destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
+    destination = os.path.join(TARGET, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
     return destination
 
