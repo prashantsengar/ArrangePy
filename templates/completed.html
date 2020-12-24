@@ -60,7 +60,12 @@
         {{value}}&nbsp; &nbsp; &nbsp; moved to <span class="gwd-span-1djn">{{key}}</span><br>
         {%endif %}
       {% endfor %}
-      {{res['Others(Not_moved)']}}&nbsp; &nbsp; &nbsp; are not moved<br>
+      {% if res['Others(Not_moved)'] is none %} 
+        0
+      {% else %}
+        {{ res['Others(Not_moved)'] }}
+      {%endif%}
+      &nbsp; &nbsp; &nbsp; are not moved<br>
     </p>
     <br><br>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
