@@ -5,7 +5,7 @@
 
 import os
 import errno
-import sys
+#import sys
 import lib.arrange
 import lib.utils
 import argparse
@@ -15,14 +15,16 @@ FOLDER_TYPES = lib.utils.configure()
 
 if __name__ == "__main__":
     # Using argparse for the CLI.
-    # This is where we take inputs from the user. In the CLI , we shall expect the following
+    # In the CLI , we shall expect the following
     # 1) Target directory is a required option
-    # 2) Default option of arrange is strong , which we will warn the user before executing.
+    # 2) Default option of arrange is strong.
     # 3) He can over ride default with --arrange=weak. --arrange=strong also shall work.
-    # 4) Warnings and user prompts can be escaped using --nowarn
+    # 4) Warnings can be escaped using --nowarning.
 
-    parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
-    parser.add_argument("clean_dir", help="The directory which you want to clean up")
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument(
+        "clean_dir", help="The directory which you want to clean up")
     # help for arrange
     arrange_help = """ Different modes of clean up 
     1) strong 
@@ -48,7 +50,8 @@ if __name__ == "__main__":
         elif args.arrange == "weak":
             choice = 1
         else:
-            raise OSError(errno.EINVAL, "Arrange value must either be strong or weak")
+            raise OSError(
+                errno.EINVAL, "Arrange value must either be strong or weak")
     else:
         print("Arrange value defaulting to strong ")
         choice = 2
@@ -56,7 +59,8 @@ if __name__ == "__main__":
     if args.nowarning:
         warn = False
     if choice == 1:
-        res = lib.arrange.weak_arrange(TARGET_FOLDER, destination, FOLDER_TYPES)
+        res = lib.arrange.weak_arrange(
+            TARGET_FOLDER, destination, FOLDER_TYPES)
     elif choice == 2:
         res = lib.arrange.strong_arrange(
             TARGET_FOLDER, destination, FOLDER_TYPES, warn=warn
