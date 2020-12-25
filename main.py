@@ -5,7 +5,6 @@
 
 import os
 import errno
-#import sys
 import lib.arrange
 import lib.utils
 import argparse
@@ -26,9 +25,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "clean_dir", help="The directory which you want to clean up")
     # help for arrange
-    arrange_help = """ Different modes of clean up 
-    1) strong 
-    2) weak 
+    arrange_help = """ Different modes of clean up
+    1) strong
+    2) weak
     Defaults to strong """
     parser.add_argument("-a", "--arrange", type=str, help=arrange_help)
     parser.add_argument(
