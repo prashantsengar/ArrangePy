@@ -91,14 +91,15 @@
 
 <body class="htmlNoPages">
   <div class="content">
-  <span class="gwd-span-1yhv">Welcome To File Cleaner&nbsp;</span>
+    <img src="{{ url_for('static', filename = 'CleanPy.jpg') }}" alt="Logo of CleanPy" width="500" height="160">
+  <span class="gwd-span-1yhv">Dashboard &nbsp;</span>
   <p class="gwd-span-1csu">Current Directory : 
     <button id="singlebutton" name="singlebutton" class="myButton" onclick="window.location.href='http://127.0.0.1:45201/changelocation';">Change</button>
     <span class="gwd-span-1139">{{data['address']}}<br>
       It has {{data['file_count']}}&nbsp; files and&nbsp;{{data['folder_count']}} folders,<br>Total items = {{data['total_items']}}<br><br><br></span></p>
   <button id="button_1" class="gwd-button-hnfe" onclick="window.location.href='standardscan';">SimpleScan</button>
   <button id="button_2" class="gwd-button-um3e" data-gwd-name="deepscan" onclick="window.location.href='deepscan';">Deep Scan</button><br>
-  <span class="gwd-span-s0wo">Visit our Github Page : <a href="https://github.com/prashantsengar/CleanPy" target="_blank">github.com/cleanpy</a></span></body>
+  <span class="gwd-span-s0wo">Visit our Github Page : <a href="https://github.com/prashantsengar/CleanPy" target="_blank">CleanPy</a></span></body>
 <p style="text-align:right"><a href="quit">Close App</a></p>
   </div>
 
