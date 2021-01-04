@@ -9,6 +9,7 @@ Organizes files in folders and helps you to clean your PC
 - `cd CleanPy`
 - `python main.py`
 - `python webapp.py` # for the web interface
+  * requires to install Flask for web interface. use `pip install flask`
 
 ## What it does
 Organizes the files based on their extensions in folders. 
