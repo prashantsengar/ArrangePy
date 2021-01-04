@@ -2,9 +2,7 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
   <title>complete</title>
-  <meta name="generator" content="Google Web Designer 10.0.1.1204">
   <style type="text/css">
     .content {
         max-width: 500px;
@@ -33,19 +31,43 @@
       color: rgb(226, 21, 21);
     }
     .gwd-p-153m {
-      width: 254px;
+      width: auto;
       font-family: "Arial Black";
-      font-weight: bold;
+      font-weight: normal;
       text-align: left;
       background-image: none;
       background-color: rgb(241, 229, 229);
       transform-origin: 50% 50% 0px;
-      height: 139px;
+      height: 120px;
       color: rgb(0, 3, 12);
     }
     .gwd-span-1djn {
       font-weight: normal;
       color: rgb(19, 213, 152);
+    }
+    .myButton {
+      box-shadow:inset 0px 1px 0px 0px #ffffff;
+      background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+      background-color:#ffffff;
+      border-radius:6px;
+      border:1px solid #dcdcdc;
+      display:inline-block;
+      cursor:pointer;
+      color:#666666;
+      font-family:Arial;
+      font-size:15px;
+      font-weight:bold;
+      padding:5px 25px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #ffffff;
+    }
+    .myButton:hover {
+      background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+      background-color:#f6f6f6;
+    }
+    .myButton:active {
+      position:relative;
+      top:1px;
     }
   </style>
 </head>
@@ -66,9 +88,12 @@
       {% else %}
         {{res['Others(Not_moved)']}}
       {%endif%}
-      &nbsp; &nbsp; &nbsp; are not moved<br>
+      &nbsp; &nbsp; &nbsp;items are not moved<br>
     </p>
-    <br><br>
+    <br>
+    <button id="singlebutton" name="singlebutton" class="myButton" onclick="window.location.href='http://127.0.0.1:45201/changelocation';">Clean another Folder</button>
+    <br>
+
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_Mt38fp.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"    autoplay></lottie-player>
     <br>
