@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, make_response
 from main import RESULT_DIR, FOLDER_TYPES, TARGET_FOLDER
 import lib.arrange
-import subprocess
 import lib.utils
 import webbrowser
 import time
@@ -66,7 +65,6 @@ def standardScan():
     TARGET_DIR = gettheAddress()
     destination = startwork(TARGET_DIR)
     report = lib.arrange.weak_arrange(TARGET_DIR, destination, FOLDER_TYPES)
-    subprocess.Popen('explorer "'+destination+'"')
     return render_template('completed.html', res=report)
 
 
@@ -76,7 +74,6 @@ def deepScan():
     TARGET_DIR = gettheAddress()
     destination = startwork(TARGET_DIR)
     report = lib.arrange.strong_arrange(TARGET_DIR, destination, FOLDER_TYPES)
-    subprocess.Popen('explorer "'+destination+'"')
     return render_template('completed.html', res=report)
 
 
