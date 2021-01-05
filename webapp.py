@@ -92,4 +92,4 @@ if __name__ == '__main__':
     time.sleep(0.5)
     linkofPage = 'http://127.0.0.1:45201/dashboard'
     webbrowser.open(linkofPage)
-app.run('localhost', port=45201,debug=True)
+app.run('localhost', port=45201)
