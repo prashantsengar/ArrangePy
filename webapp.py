@@ -66,7 +66,7 @@ def standardScan():
     TARGET_DIR = gettheAddress()
     destination = startwork(TARGET_DIR)
     report = lib.arrange.weak_arrange(TARGET_DIR, destination, FOLDER_TYPES)
-    subprocess.Popen('explorer "'+TARGET_DIR+'"')
+    subprocess.Popen('explorer "'+destination+'"')
     return render_template('completed.html', res=report)
 
 
@@ -76,7 +76,7 @@ def deepScan():
     TARGET_DIR = gettheAddress()
     destination = startwork(TARGET_DIR)
     report = lib.arrange.strong_arrange(TARGET_DIR, destination, FOLDER_TYPES)
-    subprocess.Popen('explorer "'+TARGET_DIR+'"')
+    subprocess.Popen('explorer "'+destination+'"')
     return render_template('completed.html', res=report)
 
 
@@ -92,4 +92,4 @@ if __name__ == '__main__':
     time.sleep(0.5)
     linkofPage = 'http://127.0.0.1:45201/dashboard'
     webbrowser.open(linkofPage)
-app.run('localhost', port=45201)
+app.run('localhost', port=45201,debug=True)
