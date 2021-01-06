@@ -59,12 +59,27 @@ def changingPage():
     return render_template('change.html')
 
 
+@app.route('/openlocation')
+def openlocation():
+    """Open the destination location in explorer"""
+    address = gettheAddress()
+    webbrowser.open_new(os.path.join(address, RESULT_DIR))
+    resp = make_response(redirect(url_for('dashboard')))
+    return resp
+
+
 @app.route('/dashboard/standardscan')
 def standardScan():
     """Initiate the arrange and redirect to report page"""
     TARGET_DIR = gettheAddress()
     destination = startwork(TARGET_DIR)
     report = lib.arrange.weak_arrange(TARGET_DIR, destination, FOLDER_TYPES)
+    others = "Others(Not_moved)"
+    if others not in report:
+        if len(report)==0:
+            report[others] = 'No file to move,'
+        else:
+            report[others]=0
     return render_template('completed.html', res=report)
 
 
@@ -74,6 +89,12 @@ def deepScan():
     TARGET_DIR = gettheAddress()
     destination = startwork(TARGET_DIR)
     report = lib.arrange.strong_arrange(TARGET_DIR, destination, FOLDER_TYPES)
+    others = "Others(Not_moved)"
+    if others not in report:
+        if len(report)==0:
+            report[others] = 'No file to move,'
+        else:
+            report[others]=0
     return render_template('completed.html', res=report)
 
 
@@ -89,4 +110,4 @@ if __name__ == '__main__':
     time.sleep(0.5)
     linkofPage = 'http://127.0.0.1:45201/dashboard'
     webbrowser.open(linkofPage)
-app.run('localhost', port=45201)
+    app.run('localhost', port=45201)
