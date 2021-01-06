@@ -76,10 +76,10 @@ def standardScan():
     report = lib.arrange.weak_arrange(TARGET_DIR, destination, FOLDER_TYPES)
     others = "Others(Not_moved)"
     if others not in report:
-        if len(report)==0:
+        if len(report) == 0:
             report[others] = 'No file to move,'
         else:
-            report[others]=0
+            report[others] = 0
     return render_template('completed.html', res=report)
 
 
@@ -91,10 +91,10 @@ def deepScan():
     report = lib.arrange.strong_arrange(TARGET_DIR, destination, FOLDER_TYPES)
     others = "Others(Not_moved)"
     if others not in report:
-        if len(report)==0:
+        if len(report) == 0:
             report[others] = 'No file to move,'
         else:
-            report[others]=0
+            report[others] = 0
     return render_template('completed.html', res=report)
 
 
