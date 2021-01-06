@@ -1,37 +1,7 @@
 <!DOCTYPE html>
 <head>
     <title>Choose Address</title>
-    <style type="text/css">
-        .content {
-        max-width: 500px;
-        margin: auto;
-        }
-          html, body {
-            width: 90%;
-            height: 100%;
-            margin: 0px;
-          }
-          body {
-            background-color: transparent;
-            transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-            transform-style: preserve-3d;
-          }
-          .content {
-            max-width: 500px;
-            margin: auto;
-            background: white;
-            padding: 10px;
-          }
-          .button {
-            position: relative;
-            background-color: #4CAF50;
-            border: none;
-            font-size: 100%;
-            color: #FFFFFF;
-          }
-
-          </style>
-          
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'pagestyle.css') }}">
     </head>
 <body>
    <div class="content">
@@ -46,7 +16,7 @@
         <div class="form-group" action = "http://localhost:45201/input" method = "post">
           <label class="col-md-4 control-label" for="newaddress">Location please</label>  
           <input id="newaddress" name="newaddress" type="text" placeholder="address to clean" class="form-control input-md" required=""> 
-          <input type = "submit" class="button" value = "Use this" /></p>
+          <input type = "submit" class="myButton" value = "Use this" /></p>
           {% extends "base.html" %}
 
         </div>
