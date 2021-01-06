@@ -3,125 +3,17 @@
 
 <head>
   <title>Clean Py</title>
-  <style type="text/css">
-  .content {
-  max-width: 500px;
-  margin: auto;
-  }
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0px;
-    }
-    body {
-      background-color: transparent;
-      transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-      transform-style: preserve-3d;
-    }
-    .gwd-span-1yhv {
-      width: 441px;
-      transform-origin: 50% 50% 0px;
-      text-align: center;
-      font-size: 30px;
-      font-family: "Arial Black";
-      height: 43px;
-      
-    }
-    .gwd-span-1csu {
-      width: 441px;
-      font-family: "Arial Black";
-      text-align: left;
-      font-size: 15px;
-      height: 156px;
-      transform-origin: 50% 50% 0px;
-    }
-    .gwd-span-1139 {
-      font-family: "Times New Roman";
-      font-size: 15px;
-    }
-    .button_green {
-      background-color: white; 
-      color: black; 
-      border-radius:13px;
-      border: 2px solid #4CAF50;
-      font-family:Arial;
-      font-size:15px;
-      font-weight:bold;
-      padding:5px 10px;
-    }
-
-    .button_green:hover {
-      background-color: #4CAF50;
-      color: white;
-      border: 2px solid #ffffffb6;
-    }
-
-    .button_red {
-      background-color: white; 
-      color: black; 
-      border-radius:13px;
-      border: 2px solid #f44336;
-      font-family:Arial;
-      font-size:15px;
-      font-weight:bold;
-      padding:5px 10px;
-    }
-
-    .button_red:hover {
-      background-color:#f44336;
-      color: white;
-      border: 2px solid #ffffffb6;
-    }
-
-    .myButton {
-      width: auto;
-      box-shadow:inset 0px 1px 0px 0px #ffffff;
-      background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
-      background-color:#ffffff;
-      border-radius:6px;
-      border:1px solid #dcdcdc;
-      display:inline-block;
-      cursor:pointer;
-      color:#666666;
-      font-family:Arial;
-      font-size:70%;
-      font-weight:bold;
-      padding:5px 25px;
-      text-decoration:none;
-      text-shadow:0px 1px 0px #ffffff;
-    }
-    .myButton:hover {
-      background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
-      background-color:#f6f6f6;
-    }
-    .myButton:active {
-      position:relative;
-      top:1px;
-    }
-
-    .info {
-      font-family: Georgia, serif;
-      font-size: 80%;
-      letter-spacing: 0.2px;
-      word-spacing: 2px;
-      color: #5D5D5D;
-      font-weight: normal;
-      text-decoration: none;
-      font-style: normal;
-      font-variant: normal;
-      text-transform: none;
-    }
-    
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'pagestyle.css') }}">
 </head>
 
 <body class="htmlNoPages">
   <div class="content">
     <img src="{{ url_for('static', filename = 'CleanPy.jpg') }}" alt="Logo of CleanPy" width="500" height="160">
-  <span class="gwd-span-1yhv">Dashboard &nbsp;</span>
-  <p class="gwd-span-1csu">Current Directory : 
-    <button id="singlebutton" name="singlebutton" class="myButton" onclick="window.location.href='http://127.0.0.1:45201/changelocation';">Change</button>
-    <span class="gwd-span-1139">{{data['address']}}<br><br>
+  <h1>Dashboard &nbsp;</h1>
+  <p><h4>Current Directory : </h4>
+    <span>{{data['address']}}<button id="singlebutton" name="singlebutton" class="myButton" onclick="window.location.href='http://127.0.0.1:45201/changelocation';">Change</button>
+    </span></p>
+  <br>
       It has {{data['file_count']}}&nbsp; files and&nbsp;{{data['folder_count']}} folders,<br>Total items = {{data['total_items']}}<br><br><br></span></p>
   <button id="button_1" class="button_green" onclick="window.location.href='standardscan';">Soft Arrange</button>
   <span class="info">Arranges files only from current folder only</span><br><br>
