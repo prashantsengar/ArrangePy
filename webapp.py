@@ -5,6 +5,8 @@ import lib.utils
 import webbrowser
 import time
 import os
+import platform
+import subprocess
 
 app = Flask(__name__)
 
@@ -58,14 +60,23 @@ def changingPage():
     """Ask for the location to do the cleaning work"""
     return render_template('change.html')
 
+def open_file(path):
+    """Open the file in explorer"""
+    if platform.system() == "Windows":
+        os.startfile(path)
+    elif platform.system() == "Darwin":
+        subprocess.Popen(["open", path])
+    else:
+        subprocess.Popen(["xdg-open", path])
 
 @app.route('/openlocation')
 def openlocation():
     """Open the destination location in explorer"""
     address = gettheAddress()
-    webbrowser.open_new(os.path.join(address, RESULT_DIR))
-    resp = make_response(redirect(url_for('dashboard')))
-    return resp
+    path = os.path.join(address, RESULT_DIR)
+    open_file(path)
+    response = make_response(redirect(url_for('dashboard')))
+    return response
 
 
 @app.route('/dashboard/standardscan')
