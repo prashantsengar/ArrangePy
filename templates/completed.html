@@ -9,7 +9,7 @@
   <body class="content">
     <h1>File Cleaning Completed</h1>
     <h3>Here is the report.</h3>
-    <p class="gwd-p-153m">
+    <p>
       {% for key,value in res.items() %} 
         {% if 'Others' in key %}
         {% else %}
@@ -24,8 +24,9 @@
       {%endif%}
       &nbsp; &nbsp; &nbsp;items are not moved<br>
     </p>
-    <button class="myButton" onclick="window.location.href='http://127.0.0.1:45201/openlocation';">Check</button> the folder, &nbsp; &nbsp; &nbsp;
-    <button class="myButton" onclick="window.location.href='http://127.0.0.1:45201/changelocation';">Clean another Folder</button>
+    <br><br>
+    <a class="myButton" href={{url+'/openlocation'}}>Check</a> the folder, &nbsp; &nbsp; &nbsp;
+    <a class="myButton" href={{url+'/changelocation'}}>Clean another Folder</a>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_Mt38fp.json"  background="transparent"  speed="1"  style="width: 350px; height: 350px;"    autoplay></lottie-player>
     <br><br>
