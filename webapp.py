@@ -3,7 +3,6 @@ from main import RESULT_DIR, FOLDER_TYPES, TARGET_FOLDER
 import lib.arrange
 import lib.utils
 import webbrowser
-import time
 import os
 import platform
 import subprocess
@@ -38,7 +37,7 @@ def dashboard():
     dataPacket['file_count'] = (len([1 for x in Elements if x.is_file()]))
     dataPacket['total_items'] = len(Elements)
     dataPacket['address'] = address
-    return render_template("index.html", data=dataPacket)
+    return render_template("index.html", data=dataPacket, url=linkofPage)
 
 
 @app.route('/input', methods=['POST', 'GET'])
@@ -52,13 +51,13 @@ def inputuser():
         resp = make_response(redirect(url_for('dashboard')))
         resp.set_cookie('directory', str(val))
         return resp
-    return render_template("error404.html")
+    return render_template("error404.html", url=linkofPage+'/changelocation')
 
 
 @app.route('/changelocation')
 def changingPage():
     """Ask for the location to do the cleaning work"""
-    return render_template('change.html')
+    return render_template('change.html', url=linkofPage)
 
 def open_file(path):
     """Open the file in explorer"""
@@ -91,7 +90,7 @@ def standardScan():
             report[others] = 'No file to move,'
         else:
             report[others] = 0
-    return render_template('completed.html', res=report)
+    return render_template('completed.html', res=report, url=linkofPage)
 
 
 @app.route('/dashboard/deepscan')
@@ -106,7 +105,7 @@ def deepScan():
             report[others] = 'No file to move,'
         else:
             report[others] = 0
-    return render_template('completed.html', res=report)
+    return render_template('completed.html', res=report, url=linkofPage)
 
 
 @app.route('/dashboard/quit')
@@ -118,7 +117,7 @@ def close():
 
 if __name__ == '__main__':
     print("Running the program..")
-    time.sleep(0.5)
-    linkofPage = 'http://127.0.0.1:45201/dashboard'
-    webbrowser.open(linkofPage)
-    app.run('localhost', port=45201)
+    portNumber = 45269
+    linkofPage = 'http://127.0.0.1:'+str(portNumber)
+    webbrowser.open(linkofPage+'/dashboard')
+    app.run('localhost', port=portNumber)
