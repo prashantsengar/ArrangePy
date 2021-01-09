@@ -11,7 +11,8 @@
     <img src="{{ url_for('static', filename = 'CleanPy.jpg') }}" alt="Logo of CleanPy" width="500" height="160">
   <h1>Dashboard &nbsp;</h1>
   <p><h4>Current Directory : </h4>
-    <span>{{data['address']}}<button id="singlebutton" name="singlebutton" class="myButton" onclick="window.location.href='http://127.0.0.1:45201/changelocation';">Change</button>
+    <span>{{data['address']}}
+      <a id="singlebutton" name="singlebutton" class="myButton" href= {{url+'/changelocation'}}>Change</a>
     </span></p>
   <br>
       It has {{data['file_count']}}&nbsp; files and&nbsp;{{data['folder_count']}} folders,<br>Total items = {{data['total_items']}}<br><br><br></span></p>
