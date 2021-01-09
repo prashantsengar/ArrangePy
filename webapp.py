@@ -59,6 +59,7 @@ def changingPage():
     """Ask for the location to do the cleaning work"""
     return render_template('change.html', url=linkofPage)
 
+
 def open_file(path):
     """Open the file in explorer"""
     if platform.system() == "Windows":
@@ -68,6 +69,7 @@ def open_file(path):
     else:
         subprocess.Popen(["xdg-open", path])
 
+        
 @app.route('/openlocation')
 def openlocation():
     """Open the destination location in explorer"""
