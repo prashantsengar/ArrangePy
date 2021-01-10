@@ -69,7 +69,7 @@ def open_file(path):
     else:
         subprocess.Popen(["xdg-open", path])
 
-        
+
 @app.route('/openlocation')
 def openlocation():
     """Open the destination location in explorer"""
