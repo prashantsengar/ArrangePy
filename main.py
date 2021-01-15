@@ -1,6 +1,6 @@
-# CleanPy
+# ArrangePy
 # Arranges the files according to their types for later classification
-# https://github.com/prashantsengar/CleanPy
+# https://github.com/prashantsengar/ArrangePy
 # https://t.me/joinchat/INDdLlDf-SFDPURESGgdrQ
 
 import os
@@ -22,7 +22,7 @@ if __name__ == "__main__":
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
 
-    print("---CleanPy---")
+    print("---ArrangePy---")
     print("Cleaning: ", root)
 
     choice = int(

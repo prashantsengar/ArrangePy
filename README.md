@@ -1,12 +1,12 @@
-# CleanPy
+# ArrangePy
 Organizes files in folders and helps you to clean your PC
 
 - Join our Telegram group via the link given [below](#community)
-- Read about it on my [blog](https://prashants.in/blog/cleanpy-python-script-to-organize-your-files/)
+- Read about it on my [blog](https://prashants.in/blog/CleanPy-python-script-to-organize-your-files/)
 
 ## How to use
-- `git clone https://github.com/prashantsengar/CleanPy.git`
-- `cd CleanPy`
+- `git clone https://github.com/prashantsengar/ArrangePy.git`
+- `cd ArrangePy`
 - `python main.py`
 - `python webapp.py` # for the web interface
   * requires to install Flask for web interface. use `pip install flask`
