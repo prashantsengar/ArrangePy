@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+    <title>Choose Address</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'pagestyle.css') }}">
+    </head>
+<body>
+   <div class="content">
+    <img src="{{ url_for('static', filename = 'ArrangePy.jpg') }}" alt="Logo of ArrangePy" width="500" height="160">
+    <form class="form-horizontal" action = {{url+'/input'}} method = "post">
+        <fieldset>
+        
+        <!-- Form Name -->
+        <legend>Chose the Location</legend>
+        
+        <!-- Text input-->
+          <label class="col-md-4 control-label" for="newaddress">Location please</label>  
+          <input id="newaddress" name="newaddress" type="text" placeholder="address to clean" class="form-control input-md" required=""> 
+          <input type = "submit" class="myButton" value = "Use this" /></p>
+          {% extends "base.html" %}
+        
+        
+        </fieldset>
+        </form>
+    </div>
+
+</body>
