@@ -14,6 +14,51 @@ All these files are moved to a directory named **CleanedPy** in the directory on
 
 You can specify which files to move to which directory using the config.ini file. 
 
+
+## Features
+Currently it has 2 modes
+
+- Easy mode: Organzises files in the current directory
+- Hard mode: Organizes files in the current directory and its subdirectories
+
+## How to use
+
+- `git clone https://github.com/prashantsengar/ArrangePy.git`
+- `cd ArrangePy`
+
+### Using the CLI (command-line interface)
+
+```
+usage: cli.py [-h] [-w | -s | -b] [-nw] [directory]
+
+positional arguments:
+  directory          The directory to arrange, default is current working
+                     directory
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -w, --weak         Weak arrange
+  -s, --strong       Strong arrange
+  -b, --web          Run web GUI
+  -nw, --no-warning  Don't show any warnings when running strong arrange
+```
+
+**Examples**
+
+- `python cli.py` (Arranges current directory, asks for type of arrange [WEAK/STRONG] )
+- `python cli.py -w` (Weak arranges current directory)
+- `python cli.py -w PATH/TO/DIRECTORY` (Weak arranges given directory)
+
+
+### Directly running the script
+
+- `python main.py`
+
+### Running the Web GUI
+
+- `python -m webapp` # for the web interface
+  * requires to install Flask for web interface. use `pip install flask` for the first time
+
 ### Editing the CONFIG file
 
 Say the initial configuration is this:
@@ -46,50 +91,6 @@ Videos=['mp4','mkv','avi','3gp'],
 ```
 
 Now it will arrange all mp4, mkv, avi, 3gp files to the Videos directory.
-
-
-## Features
-Currently it has 2 modes
-
-- Easy mode: Organzises files in the current directory
-- Hard mode: Organizes files in the current directory and its subdirectories
-
-## How to use
-
-- `git clone https://github.com/prashantsengar/ArrangePy.git`
-- `cd ArrangePy`
-
-### Using the CLI (command-line interface)
-
-```
-usage: python cli.py [-h] [-w | -s | -b] [directory]
-
-
-positional arguments:
-  directory     The directory to arrange, default is current working directory
-
-optional arguments:
-  -h, --help    show this help message and exit
-  -w, --weak    Weak arrange
-  -s, --strong  Strong arrange
-  -b, --web     Run web GUI
-```
-
-**Examples**
-
-- `python cli.py` (Arranges current directory, asks for type of arrange [WEAK/STRONG] )
-- `python cli.py -w` (Weak arranges current directory)
-- `python cli.py -w PATH/TO/DIRECTORY` (Weak arranges given directory)
-
-
-### Directly running the script
-
-- `python main.py`
-
-### Running the Web GUI
-
-- `python -m webapp` # for the web interface
-  * requires to install Flask for web interface. use `pip install flask` for the first time
 
 
 ## Contributing
