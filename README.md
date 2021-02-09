@@ -8,8 +8,11 @@ Organizes files in folders and helps you to clean your PC
 - `git clone https://github.com/prashantsengar/ArrangePy.git`
 - `cd ArrangePy`
 - `python main.py`
-- `python webapp.py` # for the web interface
-  * requires to install Flask for web interface. use `pip install flask`
+
+OR if you want to run the web interface directly, you can do
+
+- `python -m webapp` # for the web interface
+  * requires to install Flask for web interface. use `pip install flask` for the first time
 
 ## What it does
 Organizes the files based on their extensions in folders. 
