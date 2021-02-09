@@ -12,10 +12,9 @@ exclusive_group.add_argument("-s", "--strong", action='store_true', required=Fal
 exclusive_group.add_argument("-b", "--web", action='store_true', required=False, help="Run web GUI")
 
 parser.add_argument("directory", nargs='?', help="The directory to arrange, default is current working directory")
+parser.add_argument("-nw", "--no-warning", action='store_true', required=False, help="Don't show any warnings when running strong arrange")
 
 args = parser.parse_args()
-
-print(args)
 
 target = os.getcwd()
 
@@ -26,6 +25,6 @@ if args.web:
 elif args.weak:
     main.main(target, choice=main.CHOICES.WEAK)
 elif args.strong:
-    main.main(target, choice=main.CHOICES.STRONG)
+    main.main(target, choice=main.CHOICES.STRONG, warn_for_strong=args.no_warning)
 else:
     main.main(target)
