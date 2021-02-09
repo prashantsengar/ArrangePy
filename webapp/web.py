@@ -11,6 +11,7 @@ app = Flask(__name__)
 portNumber = 45269
 linkofPage = "http://127.0.0.1:" + str(portNumber)
 
+
 def gettheAddress():
     """Read cache file and create target folder"""
     temp = request.cookies.get("directory")
@@ -124,5 +125,5 @@ def main():
 
 
 if __name__ == "__main__":
-    print("Running the program..")    
+    print("Running the program..")
     main()
