@@ -7,11 +7,21 @@ parser = argparse.ArgumentParser()
 
 exclusive_group = parser.add_mutually_exclusive_group()
 
-exclusive_group.add_argument("-w", "--weak", action='store_true', required=False, help="Weak arrange")
-exclusive_group.add_argument("-s", "--strong", action='store_true', required=False, help="Strong arrange")
-exclusive_group.add_argument("-b", "--web", action='store_true', required=False, help="Run web GUI")
+exclusive_group.add_argument(
+    "-w", "--weak", action="store_true", required=False, help="Weak arrange"
+)
+exclusive_group.add_argument(
+    "-s", "--strong", action="store_true", required=False, help="Strong arrange"
+)
+exclusive_group.add_argument(
+    "-b", "--web", action="store_true", required=False, help="Run web GUI"
+)
 
-parser.add_argument("directory", nargs='?', help="The directory to arrange, default is current working directory")
+parser.add_argument(
+    "directory",
+    nargs="?",
+    help="The directory to arrange, default is current working directory",
+)
 
 args = parser.parse_args()
 
