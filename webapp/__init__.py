@@ -3,8 +3,10 @@ import lib.arrange as arrange
 import lib.utils as utils
 from . import web
 
+
 def main():
     web.main()
 
-if __name__=='__main__':
+
+if __name__ == "__main__":
     main()
