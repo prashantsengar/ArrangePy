@@ -16,13 +16,15 @@ try:
 except:
     TARGET_FOLDER = os.getcwd()
 
+
 class CHOICES:
     WEAK = 1
     STRONG = 2
     EXIT = 0
 
+
 def main(root, choice=None, warn_for_strong=False):
-    
+
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
 
@@ -41,7 +43,9 @@ def main(root, choice=None, warn_for_strong=False):
     if choice == CHOICES.WEAK:
         res = lib.arrange.weak_arrange(root, destination, FOLDER_TYPES)
     elif choice == CHOICES.STRONG:
-        res = lib.arrange.strong_arrange(root, destination, FOLDER_TYPES, warn_for_strong)
+        res = lib.arrange.strong_arrange(
+            root, destination, FOLDER_TYPES, warn_for_strong
+        )
     elif choice == CHOICES.EXIT:
         return
     else:
@@ -58,6 +62,7 @@ def main(root, choice=None, warn_for_strong=False):
         print(f"{value} file moved into Category {key}")
     if others in res:
         print(f"{res[others]} file Not moved")
+
 
 if __name__ == "__main__":
     main(TARGET_FOLDER)
