@@ -16,32 +16,37 @@ try:
 except:
     TARGET_FOLDER = os.getcwd()
 
-if __name__ == "__main__":
+class CHOICES:
+    WEAK = 1
+    STRONG = 2
+    EXIT = 0
 
-    root = TARGET_FOLDER
+def main(root, choice=None, warn_for_strong=False):
+    
     destination = os.path.join(TARGET_FOLDER, RESULT_DIR)
     lib.utils.makeFolders(destination, FOLDER_TYPES.keys())
 
     print("---ArrangePy---")
     print("Cleaning: ", root)
 
-    choice = int(
-        input(
-            "Press [1]: for Weak arrange"
-            + "\nPress [2]: for Strong arrange"
-            + "\nPress [0]: to exit\nOption: "
+    if choice is None:
+        choice = int(
+            input(
+                "Press [1]: for Weak arrange"
+                + "\nPress [2]: for Strong arrange"
+                + "\nPress [0]: to exit\nOption: "
+            )
         )
-    )
 
-    if choice == 1:
+    if choice == CHOICES.WEAK:
         res = lib.arrange.weak_arrange(root, destination, FOLDER_TYPES)
-    elif choice == 2:
-        res = lib.arrange.strong_arrange(root, destination, FOLDER_TYPES)
-    elif choice == 0:
-        sys.exit()
+    elif choice == CHOICES.STRONG:
+        res = lib.arrange.strong_arrange(root, destination, FOLDER_TYPES, warn_for_strong)
+    elif choice == CHOICES.EXIT:
+        return
     else:
         print("Incorrect Input")
-        sys.exit()
+        return
 
     # Final Result
     message = "Result"
@@ -53,3 +58,6 @@ if __name__ == "__main__":
         print(f"{value} file moved into Category {key}")
     if others in res:
         print(f"{res[others]} file Not moved")
+
+if __name__ == "__main__":
+    main(TARGET_FOLDER)
