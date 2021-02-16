@@ -28,14 +28,14 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
-<!--
-*** <!-- PROJECT LOGO -->
-<!-- *** <br />
-*** <p align="center">
-***   <a href="https://github.com/prashantsengar/ArrangePy">
-***     <img src="images/logo.png" alt="Logo" width="80" height="80">
-***   </a>
--->
+
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://github.com/prashantsengar/ArrangePy/">
+    <img src="/img/ArrangePy.jpg" alt="Logo" width="250" height="250">
+  </a>
+
   <h3 align="center">ArrangePy</h3>
 
   <p align="center">
@@ -83,8 +83,6 @@
 
 
 <!-- ABOUT THE PROJECT -->
-
-[![ArrangePy][./img/arrangepy.png]](https://github.com/prashantsengar/arrangepy)
 
 ## What it does
 
