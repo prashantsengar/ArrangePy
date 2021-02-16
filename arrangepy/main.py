@@ -15,10 +15,12 @@ import argparse
 RESULT_DIR = "ArrangedPy"
 FOLDER_TYPES = utils.configure()
 
+
 class CHOICES:
     WEAK = 1
     STRONG = 2
     EXIT = 0
+
 
 def run(root, choice=None, warn_for_strong=True):
     TARGET_FOLDER = root
@@ -58,6 +60,7 @@ def run(root, choice=None, warn_for_strong=True):
         print(f"{value} file moved into Category {key}")
     if others in res:
         print(f"{res[others]} file Not moved")
+
 
 def main():
     parser = argparse.ArgumentParser()

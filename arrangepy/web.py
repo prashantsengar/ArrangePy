@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, make_response
+
 ##from arrangepy.main import RESULT_DIR, FOLDER_TYPES
 from . import func
 from . import utils
@@ -7,14 +8,15 @@ import os
 import platform
 import subprocess
 import logging
-logging.basicConfig(filename='.server.log', filemode='w')
+
+logging.basicConfig(filename=".server.log", filemode="w")
 
 import sys
 
 RESULT_DIR = "ArrangedPy"
 FOLDER_TYPES = utils.configure()
 
-cli = sys.modules['flask.cli']
+cli = sys.modules["flask.cli"]
 cli.show_server_banner = lambda *x: None
 
 
@@ -23,7 +25,8 @@ app = Flask(__name__)
 portNumber = 45269
 linkofPage = "http://127.0.0.1:" + str(portNumber)
 
-TARGET_FOLDER = '.'
+TARGET_FOLDER = "."
+
 
 def gettheAddress():
     """Read cache file and create target folder"""

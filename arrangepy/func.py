@@ -33,9 +33,7 @@ def strong_arrange(root, destination, index, warn=True):
     for foldername, subfolder, filenames in os.walk(root):
         for file in filenames:
             if os.path.isfile(os.path.join(foldername, file)):
-                status, types = utils.startProcess(
-                    foldername, file, index, destination
-                )
+                status, types = utils.startProcess(foldername, file, index, destination)
                 if types in TOTAL_COUNT:
                     TOTAL_COUNT[types] = TOTAL_COUNT[types] + 1
                 else:
