@@ -74,9 +74,10 @@
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#community">Community</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
+<!--    <li><a href="#acknowledgements">Acknowledgements</a></li> -->
   </ol>
 </details>
 
@@ -96,6 +97,7 @@ You can specify which files to move to which directory using the config.ini file
 
 * Read about it on my [blog](https://prashants.in/blog/CleanPy-python-script-to-organize-your-files/)
 
+
 ## Features
 
 Currently it has 2 modes
@@ -109,6 +111,7 @@ Currently it has 2 modes
 
 * [Python](https://python.org/)
 * and some dedication by the [awesome contributors](https://github.com/prashantsengar/ArrangePy/graphs/contributors)
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -176,6 +179,8 @@ It should show you a message on how to use it.
 
 For the usage examples, replace `arrange` with `python -m arrangepy`
 
+
+
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -218,6 +223,7 @@ Images=['png','jpeg','jpg','gif', 'tiff', 'psd', 'ico'],
 ```
 
 This will move all PDF files to a directory named *PDF* and all images of mentioned extensions to a directory named *Images*.
+
 
 #### To add a new file type 
 (say .eps) to the *Images* directory, add the new extension to the Images list. So it will change to:
@@ -268,6 +274,7 @@ You can contribue to this project using multiple ways. **Here are a few things t
 - Improve the code, add new features or fix [issues](https://github.com/prashantsengar/ArrangePy/issues/). 
 
 Please read the [contribution guide](./CONTRIBUTING.md)
+
 
 ## Community 
 
