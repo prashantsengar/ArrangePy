@@ -33,7 +33,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/prashantsengar/ArrangePy/">
-    <img src="/img/ArrangePy.jpg" alt="Logo" width="250" height="250">
+    <img src="/img/logo.jpg" alt="Logo" width="250" height="110">
   </a>
 
   <h3 align="center">ArrangePy</h3>
