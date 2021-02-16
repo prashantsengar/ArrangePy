@@ -295,7 +295,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Prashant Sengar - [@prashanttgs](https://twitter.com/prashanttgs) - contact@prashants.in
+Prashant Sengar - [@prashanttgs](https://twitter.com/prashanttgs) - contact--AT--prashants.in
 
 Project Link: [https://github.com/prashantsengar/ArrangePy](https://github.com/prashantsengar/ArrangePy)
 
