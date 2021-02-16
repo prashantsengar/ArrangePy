@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>ArrangePy</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'pagestyle.css') }}">
+</head>
+
+<body class="htmlNoPages">
+  <div class="content">
+    <img src="{{ url_for('static', filename = 'ArrangePy.jpg') }}" alt="Logo of ArrangePy" width="500" height="160">
+  <h1>Dashboard &nbsp;</h1>
+  <p><h4>Current Directory : </h4>
+    <span>{{data['address']}}
+      <a id="singlebutton" name="singlebutton" class="myButton" href= {{url+'/changelocation'}}>Change</a>
+    </span></p>
+  <br>
+      It has {{data['file_count']}}&nbsp; files and&nbsp;{{data['folder_count']}} folders,<br>Total items = {{data['total_items']}}<br><br><br></span></p>
+  <button id="button_1" class="button_green" onclick="window.location.href='standardscan';">Soft Arrange</button>
+  <span class="info">Arranges files only from current folder only</span><br><br>
+  <button id="button_2" class="button_red" onclick="window.location.href='deepscan';">Hard Arrange</button>
+  <span class="info">Arranges files from current folder and subfolders.</span><br>
+  <br>
+  <span>Visit our Github Page : <a href="https://github.com/prashantsengar/ArrangePy" target="_blank">ArrangePy</a></span></body>
+<p style="text-align:right"><a href="quit">Close App</a></p>
+  </div>
+
+</body>
+</html>

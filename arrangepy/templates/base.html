@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        .back {
+            box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+            background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+            background-color:#79bbff;
+            border-radius:10px;
+            border:1px solid #84bbf3;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:16px;
+            font-weight:bold;
+            padding:4px 8px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #528ecc;
+        }
+        .back:hover {
+            background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+            background-color:#378de5;
+        }
+        .back:active {
+            position:relative;
+            top:1px;
+        }
+        .closebtn {
+            box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+            background:linear-gradient(to bottom, #ff7aca 5%, #e33983 100%);
+            background-color:#ff7aca;
+            border-radius:10px;
+            border:1px solid #84bbf3;
+            display:inline-block;
+            cursor:pointer;
+            color:#ffffff;
+            font-family:Arial;
+            font-size:auto;
+            text-align:right;
+            font-weight:bold;
+            padding:4px 8px;
+            text-decoration:none;
+            text-shadow:0px 1px 0px #528ecc;
+        }
+        .closebtn:hover {
+            background:linear-gradient(to bottom, #e33983 5%, #ff7aca 100%);
+            background-color:#e33983;
+        }
+        .closebtn:active {
+            position:relative;
+            top:1px;
+        }
+    </style>
+</head>
+<body>
+    <a href={{url+'/dashboard/'}} class="back">back</a>to dashboard &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or
+    <a href={{url+'/dashboard/quit'}} class="closebtn">Close App</a>
+
+</body>
