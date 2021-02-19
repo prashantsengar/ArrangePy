@@ -1,0 +1,3 @@
+include README.md
+graft arrangepy/static
+graft arrangepy/templates
