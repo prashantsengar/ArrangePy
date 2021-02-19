@@ -20,10 +20,7 @@ jobs:
         --user
     - name: Build a binary wheel and a source tarball
       run: >-
-        python -m
-        build
-        --sdist
-        --wheel
+        python setup.py sdist bdist_wheel
         --outdir dist/
         .
     - name: Publish distribution to PyPI
